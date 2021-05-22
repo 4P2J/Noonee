@@ -62,5 +62,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>음성 검색을 위한 스피치 권한을 요청합니다.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>음성 검색을 위한 마이크 권한을 요청합니다.</string>
+	<key>User Interface Style</key>
+	<string>Dark</string>
 </dict>
 </plist>
