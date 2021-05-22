@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import LocalAuthentication
 
 final class HomeViewController: UIViewController {
 
@@ -52,6 +53,9 @@ final class HomeViewController: UIViewController {
   private lazy var thirdFrame = self.animateCircle.frame.insetBy(dx: -20, dy: -20)
   private lazy var lastFrame = self.animateCircle.frame.insetBy(dx: 105, dy: 105)
     private var homeState = HomeState(rawValue: UserData.homeState ?? "first")
+    let authContext = LAContext()
+    var message : String?
+
 
   private var isRecievedEvent: AlertAnimation = .none
   {
@@ -128,17 +132,53 @@ final class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         setHomeState()
+        setNavigationBar()
     }
 
   override func viewDidAppear(_ animated: Bool) {
     self.startAnimate()
   }
 
-  private func setLayout() {
-    journeyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
-    historyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
-    settingButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
-  }
+    @IBAction private func testFaceId(_ sender: UIButton) {
+        if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                                         error: nil) {
+            switch authContext.biometryType {
+            case .faceID:
+                message = "Face ID 인증해주세요."
+            case .touchID :
+                message = "Touch ID로 인증해주세요."
+            case .none :
+                message = ""
+            @unknown default:
+                message = ""
+            }
+
+            authContext
+                .evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                                localizedReason: message!) { (isSuccess, error) in
+                    if isSuccess {
+                        print("인증성공")
+                    } else {
+                        if let error = error {
+                            print(error.localizedDescription) }
+                    }
+                }
+        }
+    }
+
+    private func setNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        let logoImage = UIImage(named: "logo")
+        navigationItem.titleView = UIImageView(image: logoImage)
+    }
+
+    private func setLayout() {
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
+
+        journeyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+        historyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+        settingButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+    }
 
     private func setHomeState() {
         switch homeState {
@@ -149,7 +189,7 @@ final class HomeViewController: UIViewController {
             backView.isHidden = false
         case .destionation:
             busStopLabel.text = UserData.destination
-            busNumberLabel.text = "7정거장 남음"
+            busNumberLabel.text = "7 stops left"
             timeLabel.isHidden = true
             descriptionLabel.isHidden = true
             journeyButton.isHidden = true

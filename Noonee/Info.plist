@@ -68,5 +68,7 @@
 	<string>음성 검색을 위한 마이크 권한을 요청합니다.</string>
 	<key>User Interface Style</key>
 	<string>Dark</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>페이스 아이디 인증을 허용해주세요.</string>
 </dict>
 </plist>
