@@ -28,6 +28,7 @@ final class SearchViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         setLayout()
+        setNaviBar()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -42,11 +43,13 @@ final class SearchViewController: UIViewController {
         timer.invalidate()
     }
 
-    private func setLayout() {
+    private func setNaviBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.leftBarButtonItem?.title = "Back"
         navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+    }
 
+    private func setLayout() {
         if !isDeparture {
             titleLabel.text = "Destination"
         }

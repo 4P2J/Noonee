@@ -35,6 +35,7 @@ final class ConfirmViewController: UIViewController {
     private func setLayout() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
         setButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
         departureLabel.text = UserData.departure

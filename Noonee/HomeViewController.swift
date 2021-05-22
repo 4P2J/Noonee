@@ -127,7 +127,6 @@ final class HomeViewController: UIViewController {
     super.viewDidLoad()
     self.setLayout()
     self.animationLayoutSet()
-
   }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -170,6 +169,7 @@ final class HomeViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         let logoImage = UIImage(named: "logo")
         navigationItem.titleView = UIImageView(image: logoImage)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
     }
 
     private func setLayout() {

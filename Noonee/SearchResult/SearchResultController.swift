@@ -60,8 +60,8 @@ final class SearchResultController: UIViewController {
   private func configureView() {
     self.view.backgroundColor = UIColor(named: "backgroundBlack")
     navigationController?.navigationBar.prefersLargeTitles = true
-    navigationController?.navigationItem.leftBarButtonItem?.title = "Back"
     navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
 
     placeLabel.text = titleText
   }
