@@ -15,6 +15,11 @@ final class ConfirmViewController: UIViewController {
     @IBOutlet private weak var destinationLabel: UILabel!
     @IBOutlet private weak var destinationAddressLabel: UILabel!
 
+  // MARK: Properties
+
+  let singletonData = SingletonUserData.shared
+  let searchPathAPI = SearchPathAPI()
+
     private enum ViewMetrics {
         static let buttonCornerRadius: CGFloat = 20
     }
@@ -26,10 +31,10 @@ final class ConfirmViewController: UIViewController {
     }
 
     @IBAction private func setButtonDidTap(_ sender: UIButton) {
-        if let vc = UIStoryboard(name: "Detail", bundle: .main)
-            .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            navigationController?.pushViewController(vc, animated: true)
-        }
+
+      let selectVC = SelectViewContrller(depature: singletonData.depaturePlace!, destination: singletonData.destinationPlace!)
+
+      self.navigationController?.pushViewController(selectVC, animated: true)
     }
 
     private func setLayout() {
