@@ -85,7 +85,8 @@ final class SearchViewController: UIViewController {
                 Timer.scheduledTimer(withTimeInterval: 5,
                                      repeats: false,
                                      block: { timer in
-                                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "다음뷰컨") {
+                                        if let vc = UIStoryboard(name: "Confirm", bundle: .main)
+                                            .instantiateViewController(withIdentifier: "ConfirmViewController") as? ConfirmViewController {
                                             self.navigationController?.pushViewController(vc, animated: true)
                                         }
                                      })

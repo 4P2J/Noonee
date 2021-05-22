@@ -113,22 +113,14 @@
                                     <constraint firstAttribute="height" constant="4" id="YWm-FN-Vc5"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for voice " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3k-vH-AKF">
-                                <rect key="frame" x="15.999999999999993" y="104" width="123.33333333333331" height="38.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" name="MainGreen"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c7D-zq-noH"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="j6S-0L-jKs" firstAttribute="leading" secondItem="c7D-zq-noH" secondAttribute="leading" constant="16" id="3Ti-pc-Sy8"/>
                             <constraint firstItem="j6S-0L-jKs" firstAttribute="top" secondItem="c7D-zq-noH" secondAttribute="top" constant="20" id="4S9-mH-s0g"/>
-                            <constraint firstItem="s3k-vH-AKF" firstAttribute="leading" secondItem="j6S-0L-jKs" secondAttribute="leading" id="7nl-sc-1O2"/>
                             <constraint firstItem="JdO-x4-iFh" firstAttribute="top" secondItem="7W6-KC-owV" secondAttribute="bottom" constant="10" id="UEI-Qv-hIG"/>
                             <constraint firstItem="pXT-Pw-z6O" firstAttribute="leading" secondItem="j6S-0L-jKs" secondAttribute="leading" id="VRd-pU-dLy"/>
-                            <constraint firstItem="s3k-vH-AKF" firstAttribute="top" secondItem="pXT-Pw-z6O" secondAttribute="bottom" constant="10" id="Vg3-Br-py7"/>
                             <constraint firstItem="pXT-Pw-z6O" firstAttribute="trailing" secondItem="j6S-0L-jKs" secondAttribute="trailing" id="bc6-te-kbp"/>
                             <constraint firstItem="pXT-Pw-z6O" firstAttribute="top" secondItem="j6S-0L-jKs" secondAttribute="bottom" constant="10" id="dMC-YY-tgY"/>
                             <constraint firstItem="7W6-KC-owV" firstAttribute="centerY" secondItem="c7D-zq-noH" secondAttribute="centerY" id="hJz-IK-MB2"/>
