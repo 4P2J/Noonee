@@ -13,18 +13,17 @@
 		005B9D3F2658D4F600575FAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D3D2658D4F600575FAC /* Main.storyboard */; };
 		005B9D412658D4F900575FAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D402658D4F900575FAC /* Assets.xcassets */; };
 		005B9D442658D4F900575FAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D422658D4F900575FAC /* LaunchScreen.storyboard */; };
+		005B9D502659449100575FAC /* Confirm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D4F2659449100575FAC /* Confirm.storyboard */; };
+		005B9D52265944AA00575FAC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D51265944AA00575FAC /* ConfirmViewController.swift */; };
+		005B9D60265965CB00575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D5F265965CB00575FAC /* SearchViewController.swift */; };
 		FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */; };
 		FF5A47E326593A7B0003DEB1 /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */; };
 		FF5A47E6265948350003DEB1 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E5265948350003DEB1 /* CALayer+addBorder.swift */; };
-		005B9D4C2659055D00575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D4B2659055D00575FAC /* SearchViewController.swift */; };
-		005B9D502659449100575FAC /* Confirm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D4F2659449100575FAC /* Confirm.storyboard */; };
-		005B9D52265944AA00575FAC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D51265944AA00575FAC /* ConfirmViewController.swift */; };
 		FF8B266F2658DDA000E54162 /* SearchPathAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B266E2658DDA000E54162 /* SearchPathAPI.swift */; };
 		FF8B26712658DDC200E54162 /* SearchPlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26702658DDC200E54162 /* SearchPlaceAPI.swift */; };
 		FF8B26742658DEC500E54162 /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26732658DEC500E54162 /* APIURLs.swift */; };
 		FF8B26772658E00100E54162 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26762658E00100E54162 /* Places.swift */; };
 		FF8B26792658E42100E54162 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26782658E42100E54162 /* Paths.swift */; };
-		005B9D4C2659055D00575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D4B2659055D00575FAC /* SearchViewController.swift */; };
 		FF8B267B26591D1700E54162 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8B267A26591D1700E54162 /* SearchResult.storyboard */; };
 		FF8B267D26591E4700E54162 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B267C26591E4600E54162 /* SearchResultController.swift */; };
 /* End PBXBuildFile section */
@@ -38,9 +37,9 @@
 		005B9D402658D4F900575FAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		005B9D432658D4F900575FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		005B9D452658D4F900575FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		005B9D4B2659055D00575FAC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		005B9D4F2659449100575FAC /* Confirm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirm.storyboard; sourceTree = "<group>"; };
 		005B9D51265944AA00575FAC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		005B9D5F265965CB00575FAC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
 		FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
 		FF5A47E5265948350003DEB1 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 				005B9D372658D4F600575FAC /* AppDelegate.swift */,
 				005B9D392658D4F600575FAC /* SceneDelegate.swift */,
 				005B9D3B2658D4F600575FAC /* HomeViewController.swift */,
+				005B9D5F265965CB00575FAC /* SearchViewController.swift */,
 				005B9D53265944C700575FAC /* Confirm */,
 				005B9D3D2658D4F600575FAC /* Main.storyboard */,
 				FF5A47E7265957000003DEB1 /* SearchResult */,
@@ -254,12 +254,12 @@
 				FF5A47E6265948350003DEB1 /* CALayer+addBorder.swift in Sources */,
 				005B9D3C2658D4F600575FAC /* HomeViewController.swift in Sources */,
 				005B9D382658D4F600575FAC /* AppDelegate.swift in Sources */,
-				005B9D4C2659055D00575FAC /* SearchViewController.swift in Sources */,
 				005B9D3A2658D4F600575FAC /* SceneDelegate.swift in Sources */,
 				FF8B267D26591E4700E54162 /* SearchResultController.swift in Sources */,
 				FF8B26772658E00100E54162 /* Places.swift in Sources */,
 				005B9D52265944AA00575FAC /* ConfirmViewController.swift in Sources */,
 				FF8B266F2658DDA000E54162 /* SearchPathAPI.swift in Sources */,
+				005B9D60265965CB00575FAC /* SearchViewController.swift in Sources */,
 				FF8B26742658DEC500E54162 /* APIURLs.swift in Sources */,
 				FF8B26792658E42100E54162 /* Paths.swift in Sources */,
 				FF8B26712658DDC200E54162 /* SearchPlaceAPI.swift in Sources */,
