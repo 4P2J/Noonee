@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0005DCEC2659A71500441E8E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0005DCEB2659A71500441E8E /* LocalAuthentication.framework */; };
 		005B9D382658D4F600575FAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D372658D4F600575FAC /* AppDelegate.swift */; };
 		005B9D3A2658D4F600575FAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D392658D4F600575FAC /* SceneDelegate.swift */; };
 		005B9D3C2658D4F600575FAC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D3B2658D4F600575FAC /* HomeViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0005DCEB2659A71500441E8E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		005B9D342658D4F600575FAC /* Noonee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noonee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		005B9D372658D4F600575FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		005B9D392658D4F600575FAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0005DCEC2659A71500441E8E /* LocalAuthentication.framework in Frameworks */,
 				F1B51F0CBB3F7BC8AB5517CA /* Pods_Noonee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +153,7 @@
 		D4434DC0AB9FAC4521BA38BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0005DCEB2659A71500441E8E /* LocalAuthentication.framework */,
 				00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */,
 			);
 			name = Frameworks;
