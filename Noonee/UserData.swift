@@ -49,4 +49,14 @@ struct UserData {
             UserDefaults.standard.synchronize()
         }
     }
+
+    static var homeState: String? {
+        get {
+            return UserDefaults.standard.value(forKey: "homeState") as? String
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "homeState")
+            UserDefaults.standard.synchronize()
+        }
+    }
 }

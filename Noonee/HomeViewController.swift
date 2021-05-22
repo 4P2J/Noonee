@@ -15,6 +15,11 @@ final class HomeViewController: UIViewController {
   @IBOutlet private weak var journeyButton: UIButton!
   @IBOutlet private weak var historyButton: UIButton!
   @IBOutlet private weak var settingButton: UIButton!
+    @IBOutlet private weak var busStopLabel: UILabel!
+    @IBOutlet private weak var busNumberLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var backView: UIView!
 
   private lazy var animateCircle: CircleView = {
     var circle: CircleView = CircleView()
@@ -46,6 +51,7 @@ final class HomeViewController: UIViewController {
   private lazy var secondFrame = self.animateCircle.frame.insetBy(dx: 15, dy: 15)
   private lazy var thirdFrame = self.animateCircle.frame.insetBy(dx: -20, dy: -20)
   private lazy var lastFrame = self.animateCircle.frame.insetBy(dx: 105, dy: 105)
+    private var homeState = HomeState(rawValue: UserData.homeState ?? "first")
 
   private var isRecievedEvent: AlertAnimation = .none
   {
@@ -107,11 +113,22 @@ final class HomeViewController: UIViewController {
     static let buttonCornerRadius: CGFloat = 20
   }
 
+    private enum HomeState: String {
+        case first
+        case departure
+        case destionation
+    }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setLayout()
     self.animationLayoutSet()
+
   }
+
+    override func viewWillAppear(_ animated: Bool) {
+        setHomeState()
+    }
 
   override func viewDidAppear(_ animated: Bool) {
     self.startAnimate()
@@ -122,6 +139,26 @@ final class HomeViewController: UIViewController {
     historyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
     settingButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
   }
+
+    private func setHomeState() {
+        switch homeState {
+        case .departure:
+            busStopLabel.text = UserData.departure
+            busNumberLabel.text = "No."
+            journeyButton.isHidden = true
+            backView.isHidden = false
+        case .destionation:
+            busStopLabel.text = UserData.destination
+            busNumberLabel.text = "7정거장 남음"
+            timeLabel.isHidden = true
+            descriptionLabel.isHidden = true
+            journeyButton.isHidden = true
+            backView.isHidden = false
+        default:
+            journeyButton.isHidden = false
+            backView.isHidden = true 
+        }
+    }
 
   private func animationLayoutSet() {
     self.view.addSubview(self.animateCircle)
