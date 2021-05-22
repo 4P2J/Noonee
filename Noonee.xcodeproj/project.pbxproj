@@ -19,7 +19,7 @@
 		005B9D6426596FCF00575FAC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6326596FCF00575FAC /* DetailViewController.swift */; };
 		005B9D6626596FDF00575FAC /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6526596FDF00575FAC /* DetailTableViewCell.swift */; };
 		005B9D6926597AC700575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6826597AC700575FAC /* SearchViewController.swift */; };
-		005B9D6B2659889800575FAC /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6A2659889700575FAC /* UserData.swift */; };
+		005B9D6D265990B200575FAC /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6C265990B200575FAC /* UserData.swift */; };
 		F1B51F0CBB3F7BC8AB5517CA /* Pods_Noonee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */; };
 		FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */; };
 		FF5A47E326593A7B0003DEB1 /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */; };
@@ -48,7 +48,7 @@
 		005B9D6326596FCF00575FAC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		005B9D6526596FDF00575FAC /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		005B9D6826597AC700575FAC /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		005B9D6A2659889700575FAC /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = ../../UserData.swift; sourceTree = "<group>"; };
+		005B9D6C265990B200575FAC /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noonee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2F988AC48D6167E63184FD /* Pods-Noonee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noonee.release.xcconfig"; path = "Target Support Files/Pods-Noonee/Pods-Noonee.release.xcconfig"; sourceTree = "<group>"; };
 		4F2848A8281EA0FEE8C3E3B9 /* Pods-Noonee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noonee.debug.xcconfig"; path = "Target Support Files/Pods-Noonee/Pods-Noonee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +97,7 @@
 		005B9D362658D4F600575FAC /* Noonee */ = {
 			isa = PBXGroup;
 			children = (
+				005B9D6C265990B200575FAC /* UserData.swift */,
 				005B9D6826597AC700575FAC /* SearchViewController.swift */,
 				005B9D672659706D00575FAC /* Detail */,
 				FF5A47E4265948250003DEB1 /* Extension */,
@@ -111,7 +112,6 @@
 				005B9D402658D4F900575FAC /* Assets.xcassets */,
 				005B9D422658D4F900575FAC /* LaunchScreen.storyboard */,
 				005B9D452658D4F900575FAC /* Info.plist */,
-				005B9D6A2659889700575FAC /* UserData.swift */,
 			);
 			path = Noonee;
 			sourceTree = "<group>";
@@ -342,7 +342,7 @@
 			files = (
 				005B9D6926597AC700575FAC /* SearchViewController.swift in Sources */,
 				FF5A47E6265948350003DEB1 /* CALayer+addBorder.swift in Sources */,
-				005B9D6B2659889800575FAC /* UserData.swift in Sources */,
+				005B9D6D265990B200575FAC /* UserData.swift in Sources */,
 				005B9D3C2658D4F600575FAC /* HomeViewController.swift in Sources */,
 				005B9D382658D4F600575FAC /* AppDelegate.swift in Sources */,
 				005B9D6626596FDF00575FAC /* DetailTableViewCell.swift in Sources */,
