@@ -155,6 +155,8 @@
                     <connections>
                         <outlet property="detailTableView" destination="trr-gN-sbY" id="GRo-mg-hkk"/>
                         <outlet property="payButton" destination="1c6-Ct-HE8" id="nxx-FR-zFR"/>
+                        <outlet property="totalCost" destination="LVL-h0-9cL" id="tdx-9f-2Ts"/>
+                        <outlet property="totaldurationLabel" destination="YxU-I2-uob" id="Qzi-d1-8le"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

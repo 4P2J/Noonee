@@ -22,10 +22,14 @@ final class DetailTableViewCell: UITableViewCell {
         circleView.layer.borderWidth = 1
     }
 
-    func setProperties(_ index: Int) {
-        orderLabel.text = String(index)
-        titleLabel.text = "ㅇㄹㅁㄴㅇㅁ"
-        busLabel.text = "ㄷㅈㅂㄱㅂㅈㄷㄱ"
+  func setProperties(_ index: Int, routeIndex: Int, step: Step) {
+    orderLabel.text = String(index + 1)
+    titleLabel.text = step.instruction
+    if step.type == "SUBWAY" || step.type == "BUS" {
+      busLabel.text = step.routes[routeIndex].name
+    } else {
+      busLabel.text = step.type
     }
+  }
 }
 
