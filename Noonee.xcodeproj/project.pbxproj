@@ -16,6 +16,7 @@
 		005B9D502659449100575FAC /* Confirm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D4F2659449100575FAC /* Confirm.storyboard */; };
 		005B9D52265944AA00575FAC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D51265944AA00575FAC /* ConfirmViewController.swift */; };
 		005B9D60265965CB00575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D5F265965CB00575FAC /* SearchViewController.swift */; };
+		F1B51F0CBB3F7BC8AB5517CA /* Pods_Noonee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */; };
 		FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */; };
 		FF5A47E326593A7B0003DEB1 /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */; };
 		FF5A47E6265948350003DEB1 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E5265948350003DEB1 /* CALayer+addBorder.swift */; };
@@ -40,6 +41,9 @@
 		005B9D4F2659449100575FAC /* Confirm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirm.storyboard; sourceTree = "<group>"; };
 		005B9D51265944AA00575FAC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		005B9D5F265965CB00575FAC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
+		00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noonee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E2F988AC48D6167E63184FD /* Pods-Noonee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noonee.release.xcconfig"; path = "Target Support Files/Pods-Noonee/Pods-Noonee.release.xcconfig"; sourceTree = "<group>"; };
+		4F2848A8281EA0FEE8C3E3B9 /* Pods-Noonee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noonee.debug.xcconfig"; path = "Target Support Files/Pods-Noonee/Pods-Noonee.debug.xcconfig"; sourceTree = "<group>"; };
 		FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
 		FF5A47E5265948350003DEB1 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B51F0CBB3F7BC8AB5517CA /* Pods_Noonee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +73,8 @@
 			children = (
 				005B9D362658D4F600575FAC /* Noonee */,
 				005B9D352658D4F600575FAC /* Products */,
+				71FE210B1F237597FC215CD3 /* Pods */,
+				D4434DC0AB9FAC4521BA38BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +113,24 @@
 				005B9D51265944AA00575FAC /* ConfirmViewController.swift */,
 			);
 			path = Confirm;
+			sourceTree = "<group>";
+		};
+		71FE210B1F237597FC215CD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F2848A8281EA0FEE8C3E3B9 /* Pods-Noonee.debug.xcconfig */,
+				0E2F988AC48D6167E63184FD /* Pods-Noonee.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D4434DC0AB9FAC4521BA38BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FF5A47E4265948250003DEB1 /* Extension */ = {
@@ -185,9 +210,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 005B9D482658D4F900575FAC /* Build configuration list for PBXNativeTarget "Noonee" */;
 			buildPhases = (
+				C29590C6DC8FEF0C8BDA8611 /* [CP] Check Pods Manifest.lock */,
 				005B9D302658D4F600575FAC /* Sources */,
 				005B9D312658D4F600575FAC /* Frameworks */,
 				005B9D322658D4F600575FAC /* Resources */,
+				6FA6690F2D410E5FBC8A5EAD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,6 +272,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6FA6690F2D410E5FBC8A5EAD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Noonee/Pods-Noonee-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Noonee/Pods-Noonee-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Noonee/Pods-Noonee-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C29590C6DC8FEF0C8BDA8611 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Noonee-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		005B9D302658D4F600575FAC /* Sources */ = {
@@ -407,6 +476,7 @@
 		};
 		005B9D492658D4F900575FAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F2848A8281EA0FEE8C3E3B9 /* Pods-Noonee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -426,6 +496,7 @@
 		};
 		005B9D4A2658D4F900575FAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E2F988AC48D6167E63184FD /* Pods-Noonee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
