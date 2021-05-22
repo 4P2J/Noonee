@@ -25,6 +25,10 @@ final class SearchResultController: UIViewController {
   var placeList: [Place] = []
   var isDeparture: Bool = true
 
+  // SingleTon
+  let singletonData = SingletonUserData.shared
+  // SingleTon
+
 
   // MARK: Action
 
@@ -108,6 +112,11 @@ extension SearchResultController: UITableViewDelegate, UITableViewDataSource {
             .instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
             vc.isDeparture = false
             UserData.departure = placeList[indexPath.row].title
+
+          // SingleTon
+          singletonData.depaturePlace = placeList[indexPath.row]
+          // SingleTon
+
             if let roadAddress = placeList[indexPath.row].roadAddress {
                 UserData.departureAddress = roadAddress
             } else {
@@ -119,6 +128,11 @@ extension SearchResultController: UITableViewDelegate, UITableViewDataSource {
         if let vc = UIStoryboard(name: "Confirm", bundle: .main)
             .instantiateViewController(withIdentifier: "ConfirmViewController") as? ConfirmViewController {
             UserData.destination = placeList[indexPath.row].title
+
+          // SingleTon
+          singletonData.destinationPlace = placeList[indexPath.row]
+          // SingleTon
+
             if let roadAddress = placeList[indexPath.row].roadAddress {
                 UserData.destinationAddress = roadAddress
             } else {

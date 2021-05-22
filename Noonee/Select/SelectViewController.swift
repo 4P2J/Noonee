@@ -88,7 +88,7 @@ final class SelectViewContrller: UIViewController {
 
   private func configureNavigation() {
     self.navigationItem.largeTitleDisplayMode = .always
-    self.title = "Select Route"
+    self.navigationItem.title = "Select Route"
   }
 
   private func configureButtons() {
