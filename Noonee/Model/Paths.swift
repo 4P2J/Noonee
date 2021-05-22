@@ -22,6 +22,7 @@ struct Paths: Codable {
 
       struct Step: Codable {
         var type: String
+        var instruction: String
         var duration: Int
         var routes: [Route]
         var stations: [Station]
@@ -40,6 +41,10 @@ struct Paths: Codable {
         case stepList = "steps"
       }
     }
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case pathList = "paths"
   }
 
 }
