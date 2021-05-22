@@ -20,27 +20,15 @@ final class SearchResultController: UIViewController {
   // MARK: Properties
 
   var titleText: String = ""
-  let searchPathAPI = SearchPathAPI()
-  let searchPlaceAPI = SearchPlaceAPI()
-  var placeList: [Place] = []
+  private let searchPathAPI = SearchPathAPI()
+  private let searchPlaceAPI = SearchPlaceAPI()
+  private var placeList: [Place] = []
 
 
   // MARK: Action
 
   @IBAction func retryAction(_ sender: UIButton) {
     self.navigationController?.popViewController(animated: true)
-  }
-
-
-  // MARK: Initializing
-
-  init(placeName: String) {
-    self.titleText = placeName
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
   }
 
 
