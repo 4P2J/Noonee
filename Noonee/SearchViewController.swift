@@ -22,10 +22,19 @@ final class SearchViewController: UIViewController {
     private let audioEngine = AVAudioEngine()
     var isDeparture: Bool = true
     var timer = Timer()
+    var searchText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
+                .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
+                vc.titleText = self.searchText
+                vc.isDeparture = self.isDeparture
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -97,25 +106,21 @@ final class SearchViewController: UIViewController {
         recognitionTask = speechRecognizer?
             .recognitionTask(with: recognitionRequest,
                              resultHandler: { (result, error) in
+                                var isFinal = false
 
-            if error != nil || result != nil {
-                self.speechTextField.text = result?.bestTranscription.formattedString
-                self.speechTextField.textColor = .white
+                                if result != nil {
+                                    self.speechTextField.text = result?.bestTranscription.formattedString
+                                    self.searchText = self.speechTextField.text ?? ""
+                                    isFinal = (result?.isFinal)!
+                                }
 
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
-                self.recognitionTask?.finish()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
-                        .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
-                        vc.titleText = self.speechTextField.text ?? ""
-                        vc.isDeparture = self.isDeparture
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
-            }
+                                if error != nil || isFinal {
+                                    self.audioEngine.stop()
+                                    inputNode.removeTap(onBus: 0)
+                                    self.recognitionTask?.finish()
+                                    self.recognitionRequest = nil
+                                    self.recognitionTask = nil
+                                }
         })
 
         let recordingFormat = inputNode.outputFormat(forBus: 0)
