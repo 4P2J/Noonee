@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JZ5-4d-RVn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -11,13 +11,13 @@
         <!--Set Journey-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SearchViewController" customModule="Noonee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultController" id="Y6W-OH-hqX" customClass="SearchResultController" customModule="Noonee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="강남역" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEf-et-Jae">
-                                <rect key="frame" x="16" y="108" width="130" height="60"/>
+                                <rect key="frame" x="16" y="64" width="130" height="60"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <color key="textColor" name="MainGreen"/>
                                 <nil key="highlightedColor"/>
@@ -28,7 +28,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNg-3w-b6O">
                                         <rect key="frame" x="16" y="11" width="343" height="60"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <state key="normal" title="Button">
+                                        <state key="normal" title="Retry">
                                             <color key="titleColor" name="SubGrey"/>
                                         </state>
                                         <connections>
@@ -46,12 +46,12 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y9A-GP-F59">
-                                <rect key="frame" x="0.0" y="210" width="375" height="482"/>
+                                <rect key="frame" x="0.0" y="166" width="375" height="526"/>
                                 <color key="backgroundColor" name="MainBlack"/>
                                 <color key="sectionIndexBackgroundColor" name="backgroundBlack"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYl-ji-RoJ">
-                                <rect key="frame" x="16" y="176" width="130" height="4"/>
+                                <rect key="frame" x="16" y="132" width="130" height="4"/>
                                 <color key="backgroundColor" name="MainGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="ETD-4p-He1"/>
@@ -89,31 +89,6 @@
             </objects>
             <point key="canvasLocation" x="1021.6" y="60.591133004926114"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fsl-iU-o1E">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JZ5-4d-RVn" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w6R-Cr-gWb">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="naviBlack"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="dAl-pj-WOi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="itB-kt-d1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="111.59420289855073" y="60.9375"/>
-        </scene>
     </scenes>
     <resources>
         <namedColor name="MainBlack">
@@ -127,9 +102,6 @@
         </namedColor>
         <namedColor name="backgroundBlack">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="naviBlack">
-            <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

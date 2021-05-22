@@ -133,6 +133,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="speechTextField" destination="7W6-KC-owV" id="cNb-2k-mZN"/>
+                        <outlet property="titleLabel" destination="j6S-0L-jKs" id="tOV-lQ-r87"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v4y-hx-9z3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

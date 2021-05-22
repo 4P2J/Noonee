@@ -23,6 +23,7 @@ final class SearchResultController: UIViewController {
   let searchPathAPI = SearchPathAPI()
   let searchPlaceAPI = SearchPlaceAPI()
   var placeList: [Place] = []
+  var isDeparture: Bool = true
 
 
   // MARK: Action
@@ -30,19 +31,6 @@ final class SearchResultController: UIViewController {
   @IBAction func retryAction(_ sender: UIButton) {
     self.navigationController?.popViewController(animated: true)
   }
-
-
-  // MARK: Initializing
-
-  init(placeName: String) {
-    self.titleText = placeName
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
 
   // MARK: View LifeCycle
 
@@ -74,6 +62,8 @@ final class SearchResultController: UIViewController {
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationController?.navigationItem.leftBarButtonItem?.title = "Back"
     navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
+
+    placeLabel.text = titleText
   }
 
   private func configureRetryButton() {
@@ -113,6 +103,30 @@ extension SearchResultController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if isDeparture {
+        if let vc = UIStoryboard(name: "Main", bundle: .main)
+            .instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
+            vc.isDeparture = false
+            UserData.departure = placeList[indexPath.row].title
+            if let roadAddress = placeList[indexPath.row].roadAddress {
+                UserData.departureAddress = roadAddress
+            } else {
+                UserData.departureAddress = placeList[indexPath.row].jibunAddress
+            }
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    } else {
+        if let vc = UIStoryboard(name: "Confirm", bundle: .main)
+            .instantiateViewController(withIdentifier: "ConfirmViewController") as? ConfirmViewController {
+            UserData.destination = placeList[indexPath.row].title
+            if let roadAddress = placeList[indexPath.row].roadAddress {
+                UserData.destinationAddress = roadAddress
+            } else {
+                UserData.destinationAddress = placeList[indexPath.row].jibunAddress
+            }
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 
   }
 

@@ -108,6 +108,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="departureAddressLabel" destination="2yq-Ei-sPv" id="OPh-Ii-ehm"/>
+                        <outlet property="departureLabel" destination="N0i-ha-PTm" id="IO4-35-nQR"/>
+                        <outlet property="destinationAddressLabel" destination="ekP-ID-3u4" id="eq0-vh-EkM"/>
+                        <outlet property="destinationLabel" destination="6J1-Pc-tZh" id="Nfx-Dc-uPT"/>
                         <outlet property="setButton" destination="hFO-6S-STG" id="DVp-XI-giI"/>
                     </connections>
                 </viewController>

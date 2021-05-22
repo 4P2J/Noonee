@@ -9,6 +9,8 @@ import UIKit
 import Speech
 
 final class SearchViewController: UIViewController {
+
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var speechTextField: UITextField!
 
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ko-KR"))
@@ -16,6 +18,8 @@ final class SearchViewController: UIViewController {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    var isDeparture: Bool = true
+    var timer = Timer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,7 @@ final class SearchViewController: UIViewController {
             audioEngine.stop()
             recognitionRequest?.endAudio()
         }
+        timer.invalidate()
     }
 
     private func setLayout() {
@@ -42,7 +47,16 @@ final class SearchViewController: UIViewController {
         navigationController?.navigationItem.leftBarButtonItem?.title = "Back"
         navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
 
-        speechTextField.text = "Say your departure"
+        if !isDeparture {
+            titleLabel.text = "Destination"
+        }
+
+        if isDeparture {
+            speechTextField.text = "Say your departure"
+        } else {
+            speechTextField.text = "Say your destination"
+        }
+
         speechTextField.textColor = UIColor(named: "MainGray")
     }
 
@@ -82,14 +96,14 @@ final class SearchViewController: UIViewController {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 self.recognitionTask?.finish()
-                Timer.scheduledTimer(withTimeInterval: 5,
-                                     repeats: false,
-                                     block: { timer in
-                                        if let vc = UIStoryboard(name: "Detail", bundle: .main)
-                                            .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-                                            self.navigationController?.pushViewController(vc, animated: true)
-                                        }
-                                     })
+                DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                    if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
+                        .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
+                        vc.titleText = self.speechTextField.text ?? ""
+                        vc.isDeparture = self.isDeparture
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             }
         })
 
