@@ -40,7 +40,7 @@ final class SearchViewController: UIViewController {
     private func setLayout() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.leftBarButtonItem?.title = "Back"
-        navigationController?.navigationBar.backgroundColor = UIColor(named: "MainBlack")
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
 
         speechTextField.text = "Say your departure"
         speechTextField.textColor = UIColor(named: "MainGray")
@@ -85,14 +85,14 @@ final class SearchViewController: UIViewController {
                 Timer.scheduledTimer(withTimeInterval: 5,
                                      repeats: false,
                                      block: { timer in
-                                        if let vc = UIStoryboard(name: "Confirm", bundle: .main)
-                                            .instantiateViewController(withIdentifier: "ConfirmViewController") as? ConfirmViewController {
+                                        if let vc = UIStoryboard(name: "Detail", bundle: .main)
+                                            .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
                                             self.navigationController?.pushViewController(vc, animated: true)
                                         }
                                      })
             }
         })
-        
+
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0,
                              bufferSize: 1024,

@@ -15,10 +15,10 @@
 		005B9D442658D4F900575FAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D422658D4F900575FAC /* LaunchScreen.storyboard */; };
 		005B9D502659449100575FAC /* Confirm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D4F2659449100575FAC /* Confirm.storyboard */; };
 		005B9D52265944AA00575FAC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D51265944AA00575FAC /* ConfirmViewController.swift */; };
-		005B9D60265965CB00575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D5F265965CB00575FAC /* SearchViewController.swift */; };
 		005B9D6226596FB000575FAC /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D6126596FB000575FAC /* Detail.storyboard */; };
 		005B9D6426596FCF00575FAC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6326596FCF00575FAC /* DetailViewController.swift */; };
 		005B9D6626596FDF00575FAC /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6526596FDF00575FAC /* DetailTableViewCell.swift */; };
+		005B9D6926597AC700575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6826597AC700575FAC /* SearchViewController.swift */; };
 		F1B51F0CBB3F7BC8AB5517CA /* Pods_Noonee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */; };
 		FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */; };
 		FF5A47E326593A7B0003DEB1 /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */; };
@@ -43,10 +43,10 @@
 		005B9D452658D4F900575FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		005B9D4F2659449100575FAC /* Confirm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirm.storyboard; sourceTree = "<group>"; };
 		005B9D51265944AA00575FAC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
-		005B9D5F265965CB00575FAC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
 		005B9D6126596FB000575FAC /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		005B9D6326596FCF00575FAC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		005B9D6526596FDF00575FAC /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		005B9D6826597AC700575FAC /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noonee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2F988AC48D6167E63184FD /* Pods-Noonee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noonee.release.xcconfig"; path = "Target Support Files/Pods-Noonee/Pods-Noonee.release.xcconfig"; sourceTree = "<group>"; };
 		4F2848A8281EA0FEE8C3E3B9 /* Pods-Noonee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noonee.debug.xcconfig"; path = "Target Support Files/Pods-Noonee/Pods-Noonee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +95,7 @@
 		005B9D362658D4F600575FAC /* Noonee */ = {
 			isa = PBXGroup;
 			children = (
+				005B9D6826597AC700575FAC /* SearchViewController.swift */,
 				005B9D672659706D00575FAC /* Detail */,
 				FF5A47E4265948250003DEB1 /* Extension */,
 				FF8B26752658DFD200E54162 /* Model */,
@@ -102,7 +103,6 @@
 				005B9D372658D4F600575FAC /* AppDelegate.swift */,
 				005B9D392658D4F600575FAC /* SceneDelegate.swift */,
 				005B9D3B2658D4F600575FAC /* HomeViewController.swift */,
-				005B9D5F265965CB00575FAC /* SearchViewController.swift */,
 				005B9D53265944C700575FAC /* Confirm */,
 				005B9D3D2658D4F600575FAC /* Main.storyboard */,
 				FF5A47E7265957000003DEB1 /* SearchResult */,
@@ -337,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005B9D6926597AC700575FAC /* SearchViewController.swift in Sources */,
 				FF5A47E6265948350003DEB1 /* CALayer+addBorder.swift in Sources */,
 				005B9D3C2658D4F600575FAC /* HomeViewController.swift in Sources */,
 				005B9D382658D4F600575FAC /* AppDelegate.swift in Sources */,
@@ -346,7 +347,6 @@
 				FF8B26772658E00100E54162 /* Places.swift in Sources */,
 				005B9D52265944AA00575FAC /* ConfirmViewController.swift in Sources */,
 				FF8B266F2658DDA000E54162 /* SearchPathAPI.swift in Sources */,
-				005B9D60265965CB00575FAC /* SearchViewController.swift in Sources */,
 				FF8B26742658DEC500E54162 /* APIURLs.swift in Sources */,
 				FF8B26792658E42100E54162 /* Paths.swift in Sources */,
 				FF8B26712658DDC200E54162 /* SearchPlaceAPI.swift in Sources */,
