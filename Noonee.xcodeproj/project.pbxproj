@@ -24,6 +24,7 @@
 		FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */; };
 		FF5A47E326593A7B0003DEB1 /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */; };
 		FF5A47E6265948350003DEB1 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E5265948350003DEB1 /* CALayer+addBorder.swift */; };
+		FF5A47F0265970880003DEB1 /* AlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47EF265970880003DEB1 /* AlertAnimation.swift */; };
 		FF8B266F2658DDA000E54162 /* SearchPathAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B266E2658DDA000E54162 /* SearchPathAPI.swift */; };
 		FF8B26712658DDC200E54162 /* SearchPlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26702658DDC200E54162 /* SearchPlaceAPI.swift */; };
 		FF8B26742658DEC500E54162 /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26732658DEC500E54162 /* APIURLs.swift */; };
@@ -55,6 +56,7 @@
 		FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
 		FF5A47E5265948350003DEB1 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
+		FF5A47EF265970880003DEB1 /* AlertAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimation.swift; sourceTree = "<group>"; };
 		FF8B266E2658DDA000E54162 /* SearchPathAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPathAPI.swift; sourceTree = "<group>"; };
 		FF8B26702658DDC200E54162 /* SearchPlaceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceAPI.swift; sourceTree = "<group>"; };
 		FF8B26732658DEC500E54162 /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				FF8B26752658DFD200E54162 /* Model */,
 				FF8B266A2658DD4000E54162 /* APIService */,
 				005B9D372658D4F600575FAC /* AppDelegate.swift */,
+				FF5A47EE2659707B0003DEB1 /* AlertAnimation */,
 				005B9D392658D4F600575FAC /* SceneDelegate.swift */,
 				005B9D3B2658D4F600575FAC /* HomeViewController.swift */,
 				005B9D53265944C700575FAC /* Confirm */,
@@ -177,6 +180,14 @@
 				FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */,
 			);
 			path = PlaceTableView;
+			sourceTree = "<group>";
+		};
+		FF5A47EE2659707B0003DEB1 /* AlertAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				FF5A47EF265970880003DEB1 /* AlertAnimation.swift */,
+			);
+			path = AlertAnimation;
 			sourceTree = "<group>";
 		};
 		FF8B266A2658DD4000E54162 /* APIService */ = {
@@ -356,6 +367,7 @@
 				FF8B26712658DDC200E54162 /* SearchPlaceAPI.swift in Sources */,
 				FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */,
 				005B9D6426596FCF00575FAC /* DetailViewController.swift in Sources */,
+				FF5A47F0265970880003DEB1 /* AlertAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
