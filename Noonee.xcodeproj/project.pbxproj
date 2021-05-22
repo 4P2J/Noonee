@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,9 @@
 		005B9D502659449100575FAC /* Confirm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D4F2659449100575FAC /* Confirm.storyboard */; };
 		005B9D52265944AA00575FAC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D51265944AA00575FAC /* ConfirmViewController.swift */; };
 		005B9D60265965CB00575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D5F265965CB00575FAC /* SearchViewController.swift */; };
+		005B9D6226596FB000575FAC /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005B9D6126596FB000575FAC /* Detail.storyboard */; };
+		005B9D6426596FCF00575FAC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6326596FCF00575FAC /* DetailViewController.swift */; };
+		005B9D6626596FDF00575FAC /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D6526596FDF00575FAC /* DetailTableViewCell.swift */; };
 		F1B51F0CBB3F7BC8AB5517CA /* Pods_Noonee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */; };
 		FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A47E026593A7B0003DEB1 /* PlaceTableViewCell.swift */; };
 		FF5A47E326593A7B0003DEB1 /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5A47E126593A7B0003DEB1 /* PlaceTableViewCell.xib */; };
@@ -41,6 +44,9 @@
 		005B9D4F2659449100575FAC /* Confirm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirm.storyboard; sourceTree = "<group>"; };
 		005B9D51265944AA00575FAC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		005B9D5F265965CB00575FAC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
+		005B9D6126596FB000575FAC /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		005B9D6326596FCF00575FAC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		005B9D6526596FDF00575FAC /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		00EC6597D9473E2CE13D9AC8 /* Pods_Noonee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Noonee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2F988AC48D6167E63184FD /* Pods-Noonee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noonee.release.xcconfig"; path = "Target Support Files/Pods-Noonee/Pods-Noonee.release.xcconfig"; sourceTree = "<group>"; };
 		4F2848A8281EA0FEE8C3E3B9 /* Pods-Noonee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noonee.debug.xcconfig"; path = "Target Support Files/Pods-Noonee/Pods-Noonee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 		005B9D362658D4F600575FAC /* Noonee */ = {
 			isa = PBXGroup;
 			children = (
+				005B9D672659706D00575FAC /* Detail */,
 				FF5A47E4265948250003DEB1 /* Extension */,
 				FF8B26752658DFD200E54162 /* Model */,
 				FF8B266A2658DD4000E54162 /* APIService */,
@@ -115,13 +122,22 @@
 			path = Confirm;
 			sourceTree = "<group>";
 		};
+		005B9D672659706D00575FAC /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				005B9D6526596FDF00575FAC /* DetailTableViewCell.swift */,
+				005B9D6326596FCF00575FAC /* DetailViewController.swift */,
+				005B9D6126596FB000575FAC /* Detail.storyboard */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		71FE210B1F237597FC215CD3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				4F2848A8281EA0FEE8C3E3B9 /* Pods-Noonee.debug.xcconfig */,
 				0E2F988AC48D6167E63184FD /* Pods-Noonee.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -266,6 +282,7 @@
 				005B9D412658D4F900575FAC /* Assets.xcassets in Resources */,
 				FF8B267B26591D1700E54162 /* SearchResult.storyboard in Resources */,
 				FF5A47E326593A7B0003DEB1 /* PlaceTableViewCell.xib in Resources */,
+				005B9D6226596FB000575FAC /* Detail.storyboard in Resources */,
 				005B9D3F2658D4F600575FAC /* Main.storyboard in Resources */,
 				005B9D502659449100575FAC /* Confirm.storyboard in Resources */,
 			);
@@ -323,6 +340,7 @@
 				FF5A47E6265948350003DEB1 /* CALayer+addBorder.swift in Sources */,
 				005B9D3C2658D4F600575FAC /* HomeViewController.swift in Sources */,
 				005B9D382658D4F600575FAC /* AppDelegate.swift in Sources */,
+				005B9D6626596FDF00575FAC /* DetailTableViewCell.swift in Sources */,
 				005B9D3A2658D4F600575FAC /* SceneDelegate.swift in Sources */,
 				FF8B267D26591E4700E54162 /* SearchResultController.swift in Sources */,
 				FF8B26772658E00100E54162 /* Places.swift in Sources */,
@@ -333,6 +351,7 @@
 				FF8B26792658E42100E54162 /* Paths.swift in Sources */,
 				FF8B26712658DDC200E54162 /* SearchPlaceAPI.swift in Sources */,
 				FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */,
+				005B9D6426596FCF00575FAC /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
