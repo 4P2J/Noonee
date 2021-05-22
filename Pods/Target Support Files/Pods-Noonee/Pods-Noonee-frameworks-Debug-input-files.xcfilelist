@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Noonee/Pods-Noonee-frameworks.sh
+${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

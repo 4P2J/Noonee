@@ -6,6 +6,6 @@ target 'Noonee' do
   use_frameworks!
 
  pod 'SnapKit'
- # Pods for Noonee
+ pod 'NVActivityIndicatorView'
 
 end

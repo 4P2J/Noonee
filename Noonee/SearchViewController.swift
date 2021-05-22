@@ -7,11 +7,13 @@
 
 import UIKit
 import Speech
+import NVActivityIndicatorView
 
 final class SearchViewController: UIViewController {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var speechTextField: UITextField!
+    @IBOutlet private weak var recordAnimationView: NVActivityIndicatorView!
 
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ko-KR"))
 
@@ -50,6 +52,10 @@ final class SearchViewController: UIViewController {
     }
 
     private func setLayout() {
+        recordAnimationView.type = .ballScaleMultiple
+        recordAnimationView.color = UIColor(named: "mainGreen")!
+        recordAnimationView.startAnimating()
+
         if !isDeparture {
             titleLabel.text = "Destination"
         }
@@ -88,7 +94,9 @@ final class SearchViewController: UIViewController {
 
         recognitionRequest.shouldReportPartialResults = true
 
-        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+        recognitionTask = speechRecognizer?
+            .recognitionTask(with: recognitionRequest,
+                             resultHandler: { (result, error) in
 
             if error != nil || result != nil {
                 self.speechTextField.text = result?.bestTranscription.formattedString
@@ -99,7 +107,7 @@ final class SearchViewController: UIViewController {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 self.recognitionTask?.finish()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
                         .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
                         vc.titleText = self.speechTextField.text ?? ""
