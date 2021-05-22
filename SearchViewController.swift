@@ -40,7 +40,7 @@ final class SearchViewController: UIViewController {
     private func setLayout() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.leftBarButtonItem?.title = "Back"
-        navigationController?.navigationBar.backgroundColor = UIColor(named: "MainBlack")
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
 
         speechTextField.text = "Say your departure"
         speechTextField.textColor = UIColor(named: "MainGray")
@@ -85,7 +85,8 @@ final class SearchViewController: UIViewController {
                 Timer.scheduledTimer(withTimeInterval: 5,
                                      repeats: false,
                                      block: { timer in
-                                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "다음뷰컨") {
+                                        if let vc = UIStoryboard(name: "Detail", bundle: .main)
+                                            .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
                                             self.navigationController?.pushViewController(vc, animated: true)
                                         }
                                      })

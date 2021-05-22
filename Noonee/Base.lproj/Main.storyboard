@@ -61,7 +61,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="backgroundBlack"/>
                         <constraints>
                             <constraint firstItem="ELI-iY-cOp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="1cC-Kc-N6R"/>
                             <constraint firstItem="ELI-iY-cOp" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="L86-WC-P5d"/>
@@ -115,7 +115,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c7D-zq-noH"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="backgroundBlack"/>
                         <constraints>
                             <constraint firstItem="j6S-0L-jKs" firstAttribute="leading" secondItem="c7D-zq-noH" secondAttribute="leading" constant="16" id="3Ti-pc-Sy8"/>
                             <constraint firstItem="j6S-0L-jKs" firstAttribute="top" secondItem="c7D-zq-noH" secondAttribute="top" constant="20" id="4S9-mH-s0g"/>
@@ -147,7 +147,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8io-hP-Lx9">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="MainBlack"/>
+                        <color key="backgroundColor" name="naviBlack"/>
+                        <color key="barTintColor" name="naviBlack"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -174,6 +175,12 @@
         </namedColor>
         <namedColor name="MainGreen">
             <color red="0.72549019607843135" green="0.92941176470588238" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="backgroundBlack">
+            <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="naviBlack">
+            <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

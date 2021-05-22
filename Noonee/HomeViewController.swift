@@ -19,10 +19,21 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setLayout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        setNavigationBar()
+    }
+
+    private func setNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
     private func setLayout() {
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
+
         journeyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
         historyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
         settingButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius

@@ -86,7 +86,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="backgroundBlack"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="j9l-zb-IeG" secondAttribute="trailing" constant="16" id="1a0-fF-ilU"/>
                             <constraint firstItem="oiq-a2-fDB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="4FI-QV-vGl"/>
@@ -119,6 +119,9 @@
     <resources>
         <namedColor name="MainGreen">
             <color red="0.72549019607843135" green="0.92941176470588238" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="backgroundBlack">
+            <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
