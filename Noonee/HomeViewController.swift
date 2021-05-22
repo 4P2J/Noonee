@@ -6,25 +6,180 @@
 //
 
 import UIKit
+import SnapKit
 
 final class HomeViewController: UIViewController {
 
-    @IBOutlet private weak var journeyButton: UIButton!
-    @IBOutlet private weak var historyButton: UIButton!
-    @IBOutlet private weak var settingButton: UIButton!
+  // MARK: UI
 
-    private enum ViewMetrics {
-        static let buttonCornerRadius: CGFloat = 20
+  @IBOutlet private weak var journeyButton: UIButton!
+  @IBOutlet private weak var historyButton: UIButton!
+  @IBOutlet private weak var settingButton: UIButton!
+
+  private lazy var animateCircle: CircleView = {
+    var circle: CircleView = CircleView()
+    var centerX = UIScreen.main.bounds.size.width * 0.5
+    var centerY = UIScreen.main.bounds.size.height * 0.5
+    circle.frame = CGRect(x: centerX, y: centerY, width: 100, height: 100)
+    circle.layer.backgroundColor = UIColor.red.cgColor
+    circle.layer.cornerRadius = 50
+    circle.layer.shadowOpacity = 0.5
+    circle.layer.shadowRadius = 7
+    return circle
+  }()
+  private var firstAlertLabel: UILabel = {
+    let label = UILabel()
+    label.font = .boldSystemFont(ofSize: 22)
+    return label
+  }()
+  private var secondAlertLabel: UILabel = {
+    let label = UILabel()
+    label.font = .boldSystemFont(ofSize: 25)
+    return label
+  }()
+
+
+  // MARK: Properties
+
+  private lazy var viewCenter: CGPoint = self.view.center
+  private lazy var firstFrame = self.animateCircle.frame.insetBy(dx: -50, dy: -50)
+  private lazy var secondFrame = self.animateCircle.frame.insetBy(dx: 15, dy: 15)
+  private lazy var thirdFrame = self.animateCircle.frame.insetBy(dx: -20, dy: -20)
+  private lazy var lastFrame = self.animateCircle.frame.insetBy(dx: 105, dy: 105)
+
+  private var isRecievedEvent: AlertAnimation = .none
+  {
+    didSet {
+      switch isRecievedEvent {
+      case .none:
+        return
+      case .payment:
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"))
+      case .isArrived:
+        self.colorFrameChange(UIColor(named: "mainGreen"))
+      case .isOnBoard:
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"))
+      case .curveSoon:
+        self.colorFrameChange(UIColor(named: "AlertColorRed"))
+      case .afterOneStation:
+        self.colorFrameChange(UIColor(named: "mainGreen"))
+      case .getOffNow:
+        self.colorFrameChange(UIColor(named: "mainGreen"))
+      case .completeTheJourney:
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"))
+      }
+    }
+  }
+  private let duration: Double = 2
+
+
+  // MARK: Functions
+
+  private func colorFrameChange(_ color: UIColor?) {
+    DispatchQueue.main.async {
+      self.animateCircle.backgroundColor = color
+      UIView.animate(withDuration: self.duration, animations: {
+        self.animateCircle.frame = self.firstFrame
+      }) { _ in
+        UIView.animate(withDuration: self.duration, animations: {
+          self.animateCircle.frame = self.secondFrame
+        }) { _ in
+          UIView.animate(withDuration: self.duration, animations: {
+            self.animateCircle.frame = self.thirdFrame
+          }) { _ in
+            UIView.animate(withDuration: self.duration, animations: {
+              self.animateCircle.frame = self.lastFrame
+            })
+          }
+        }
+      }
+    }
+  }
+
+  private func startAnimate() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      self.isRecievedEvent = .afterOneStation
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setLayout()
+  }
+
+  private enum ViewMetrics {
+    static let buttonCornerRadius: CGFloat = 20
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.setLayout()
+    self.animationLayoutSet()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    self.startAnimate()
+  }
+
+  private func setLayout() {
+    journeyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+    historyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+    settingButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+  }
+
+  private func animationLayoutSet() {
+    self.view.addSubview(self.animateCircle)
+    self.animateCircle.addSubview(self.firstAlertLabel)
+    self.animateCircle.addSubview(self.secondAlertLabel)
+    self.view.bringSubviewToFront(self.animateCircle)
+
+
+//    self.firstAlertLabel.snp.makeConstraints{
+//      $0.bottom.equalTo(self.animateCircle.snp.centerY)
+//      $0.centerX.equalToSuperview()
+//    }
+//    self.secondAlertLabel.snp.makeConstraints{
+//      $0.top.equalTo(self.animateCircle.snp.centerY)
+//      $0.centerX.equalToSuperview()
+//    }
+  }
+}
+
+class CircleView: UIView {
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateCornerRadius()
     }
 
-    private func setLayout() {
-        journeyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
-        historyButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
-        settingButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+    private func updateCornerRadius() {
+        layer.cornerRadius = min(bounds.width, bounds.height) / 2
+    }
+
+    override func action(for layer: CALayer, forKey event: String) -> CAAction? {
+        if event == "cornerRadius" {
+            if let boundsAnimation = layer.animation(forKey: "bounds.size") as? CABasicAnimation {
+                let animation = boundsAnimation.copy() as! CABasicAnimation
+                animation.keyPath = "cornerRadius"
+                let action = Action()
+                action.pendingAnimation = animation
+                action.priorCornerRadius = layer.cornerRadius
+                return action
+            }
+        }
+        return super.action(for: layer, forKey: event)
+    }
+
+    private class Action: NSObject, CAAction {
+        var pendingAnimation: CABasicAnimation?
+        var priorCornerRadius: CGFloat = 0
+        public func run(forKey event: String, object anObject: Any, arguments dict: [AnyHashable : Any]?) {
+            if let layer = anObject as? CALayer, let pendingAnimation = pendingAnimation {
+                if pendingAnimation.isAdditive {
+                    pendingAnimation.fromValue = priorCornerRadius - layer.cornerRadius
+                    pendingAnimation.toValue = 0
+                } else {
+                    pendingAnimation.fromValue = priorCornerRadius
+                    pendingAnimation.toValue = layer.cornerRadius
+                }
+                layer.add(pendingAnimation, forKey: "cornerRadius")
+            }
+        }
     }
 }

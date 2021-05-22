@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import UIKit
+
+enum AlertAnimation {
+  case none
+  case payment
+  case isArrived
+  case isOnBoard
+  case curveSoon
+  case afterOneStation
+  case getOffNow
+  case completeTheJourney
+}
