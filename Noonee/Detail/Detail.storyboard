@@ -45,7 +45,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="q1d-h4-30O">
-                                <rect key="frame" x="229.5" y="30" width="90" height="81.5"/>
+                                <rect key="frame" x="251" y="30" width="90" height="81.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQK-5y-QOE">
                                         <rect key="frame" x="0.0" y="0.0" width="57.5" height="29"/>
@@ -138,9 +138,9 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="trr-gN-sbY" secondAttribute="trailing" id="0xG-KZ-GQ5"/>
                             <constraint firstItem="B5g-tz-RHm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="2F6-Au-Bkj"/>
-                            <constraint firstItem="q1d-h4-30O" firstAttribute="leading" secondItem="B5g-tz-RHm" secondAttribute="trailing" constant="68" id="ClT-Re-Xpd"/>
+                            <constraint firstItem="q1d-h4-30O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="B5g-tz-RHm" secondAttribute="trailing" constant="68" id="ClT-Re-Xpd"/>
                             <constraint firstItem="1c6-Ct-HE8" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="ERT-vA-EO6"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q1d-h4-30O" secondAttribute="trailing" constant="16" id="JVK-bL-5Ak"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="q1d-h4-30O" secondAttribute="trailing" constant="73" id="JVK-bL-5Ak"/>
                             <constraint firstItem="1c6-Ct-HE8" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.828" id="LqP-lq-5Kg"/>
                             <constraint firstItem="trr-gN-sbY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Q5v-Wz-ZEB"/>
                             <constraint firstItem="1c6-Ct-HE8" firstAttribute="top" secondItem="trr-gN-sbY" secondAttribute="bottom" constant="20" id="TZr-hK-CNc"/>

@@ -15,27 +15,27 @@ final class SelectViewContrller: UIViewController {
 
   private let recommandButton: UIButton = {
     let button = UIButton()
-    button.setTitle("Recommand", for: .normal)
+    button.setTitle("Recommend", for: .normal)
     button.titleLabel?.font = .boldSystemFont(ofSize: 40)
     button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = UIColor(named: "buttonGray")
+    button.backgroundColor = UIColor(named: "HomeButtonGray")
     return button
   }()
   private let timeLeastButton: UIButton = {
     let button = UIButton()
-    button.setTitle("Time Least", for: .normal)
+    button.setTitle("Minimum Time", for: .normal)
     button.setTitleColor(.white, for: .normal)
     button.titleLabel?.font = .boldSystemFont(ofSize: 40)
-    button.backgroundColor = UIColor(named: "buttonGray")
+    button.backgroundColor = UIColor(named: "HomeButtonGray")
 
     return button
   }()
   private let trandsferLeastButton: UIButton = {
     let button = UIButton()
-    button.setTitle("Trandsfer Least", for: .normal)
+    button.setTitle("Miminum Transfer", for: .normal)
     button.setTitleColor(.white, for: .normal)
     button.titleLabel?.font = .boldSystemFont(ofSize: 40)
-    button.backgroundColor = UIColor(named: "buttonGray")
+    button.backgroundColor = UIColor(named: "HomeButtonGray")
     return button
   }()
 
@@ -89,6 +89,7 @@ final class SelectViewContrller: UIViewController {
   private func configureNavigation() {
     self.navigationItem.largeTitleDisplayMode = .always
     self.navigationItem.title = "Select Route"
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
   }
 
   private func configureButtons() {
