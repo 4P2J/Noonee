@@ -46,6 +46,5 @@ struct Paths: Codable {
   enum CodingKeys: String, CodingKey {
     case pathList = "paths"
   }
-
 }
 
