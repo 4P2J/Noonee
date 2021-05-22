@@ -24,6 +24,7 @@
 		FF8B26742658DEC500E54162 /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26732658DEC500E54162 /* APIURLs.swift */; };
 		FF8B26772658E00100E54162 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26762658E00100E54162 /* Places.swift */; };
 		FF8B26792658E42100E54162 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26782658E42100E54162 /* Paths.swift */; };
+		005B9D4C2659055D00575FAC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005B9D4B2659055D00575FAC /* SearchViewController.swift */; };
 		FF8B267B26591D1700E54162 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8B267A26591D1700E54162 /* SearchResult.storyboard */; };
 		FF8B267D26591E4700E54162 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B267C26591E4600E54162 /* SearchResultController.swift */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,7 @@
 				005B9D3B2658D4F600575FAC /* HomeViewController.swift */,
 				005B9D53265944C700575FAC /* Confirm */,
 				005B9D3D2658D4F600575FAC /* Main.storyboard */,
+				FF5A47E7265957000003DEB1 /* SearchResult */,
 				005B9D402658D4F900575FAC /* Assets.xcassets */,
 				005B9D422658D4F900575FAC /* LaunchScreen.storyboard */,
 				005B9D452658D4F900575FAC /* Info.plist */,
