@@ -32,6 +32,8 @@
 		FF8B26792658E42100E54162 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26782658E42100E54162 /* Paths.swift */; };
 		FF8B267B26591D1700E54162 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8B267A26591D1700E54162 /* SearchResult.storyboard */; };
 		FF8B267D26591E4700E54162 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B267C26591E4600E54162 /* SearchResultController.swift */; };
+		FFF3C0B4265999C20069C066 /* SingletonUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF3C0B3265999C20069C066 /* SingletonUserData.swift */; };
+		FFF3C0B82659A0380069C066 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF3C0B72659A0380069C066 /* SelectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		FF8B26782658E42100E54162 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
 		FF8B267A26591D1700E54162 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
 		FF8B267C26591E4600E54162 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
+		FFF3C0B3265999C20069C066 /* SingletonUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonUserData.swift; sourceTree = "<group>"; };
+		FFF3C0B72659A0380069C066 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		005B9D362658D4F600575FAC /* Noonee */ = {
 			isa = PBXGroup;
 			children = (
+				FFF3C0B2265999B30069C066 /* SingletonUserData */,
 				005B9D6C265990B200575FAC /* UserData.swift */,
 				005B9D6826597AC700575FAC /* SearchViewController.swift */,
 				005B9D672659706D00575FAC /* Detail */,
@@ -108,6 +113,7 @@
 				005B9D372658D4F600575FAC /* AppDelegate.swift */,
 				FF5A47EE2659707B0003DEB1 /* AlertAnimation */,
 				005B9D392658D4F600575FAC /* SceneDelegate.swift */,
+				FFF3C0B52659A01F0069C066 /* Select */,
 				005B9D3B2658D4F600575FAC /* HomeViewController.swift */,
 				005B9D53265944C700575FAC /* Confirm */,
 				005B9D3D2658D4F600575FAC /* Main.storyboard */,
@@ -233,6 +239,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FFF3C0B2265999B30069C066 /* SingletonUserData */ = {
+			isa = PBXGroup;
+			children = (
+				FFF3C0B3265999C20069C066 /* SingletonUserData.swift */,
+			);
+			path = SingletonUserData;
+			sourceTree = "<group>";
+		};
+		FFF3C0B52659A01F0069C066 /* Select */ = {
+			isa = PBXGroup;
+			children = (
+				FFF3C0B72659A0380069C066 /* SelectViewController.swift */,
+			);
+			path = Select;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -355,6 +377,7 @@
 				FF5A47E6265948350003DEB1 /* CALayer+addBorder.swift in Sources */,
 				005B9D6D265990B200575FAC /* UserData.swift in Sources */,
 				005B9D3C2658D4F600575FAC /* HomeViewController.swift in Sources */,
+				FFF3C0B4265999C20069C066 /* SingletonUserData.swift in Sources */,
 				005B9D382658D4F600575FAC /* AppDelegate.swift in Sources */,
 				005B9D6626596FDF00575FAC /* DetailTableViewCell.swift in Sources */,
 				005B9D3A2658D4F600575FAC /* SceneDelegate.swift in Sources */,
@@ -364,6 +387,7 @@
 				FF8B266F2658DDA000E54162 /* SearchPathAPI.swift in Sources */,
 				FF8B26742658DEC500E54162 /* APIURLs.swift in Sources */,
 				FF8B26792658E42100E54162 /* Paths.swift in Sources */,
+				FFF3C0B82659A0380069C066 /* SelectViewController.swift in Sources */,
 				FF8B26712658DDC200E54162 /* SearchPlaceAPI.swift in Sources */,
 				FF5A47E226593A7B0003DEB1 /* PlaceTableViewCell.swift in Sources */,
 				005B9D6426596FCF00575FAC /* DetailViewController.swift in Sources */,
