@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 final class DetailViewController: UIViewController {
 
@@ -17,6 +18,9 @@ final class DetailViewController: UIViewController {
   @IBOutlet weak var totaldurationLabel: UILabel!
   @IBOutlet weak var totalCost: UILabel!
 
+  let authContext = LAContext()
+  var message : String?
+
     private enum ViewMetrics {
         static let buttonCornerRadius: CGFloat = 20
     }
@@ -25,6 +29,43 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         setLayout()
     }
+
+  var error: NSError?
+
+  @IBAction private func testFaceId(_ sender: UIButton) {
+      if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                                       error: &error) {
+          switch authContext.biometryType {
+          case .faceID:
+              message = "Face ID 인증해주세요."
+          case .touchID :
+              message = "Touch ID로 인증해주세요."
+          case .none :
+              message = ""
+          @unknown default:
+              message = ""
+          }
+
+          authContext
+              .evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                              localizedReason: message!) { (isSuccess, error) in
+                  if isSuccess {
+                    DispatchQueue.main.async {
+                      let rootVC = self.navigationController?.viewControllers[0] as? HomeViewController
+                      rootVC?.steps = self.StepList
+                      rootVC?.homeState = .departure
+                      rootVC?.isRecievedEvent = .payment
+                      self.navigationController?.popToRootViewController(animated: true)
+                    }
+                  } else {
+                      if let error = error {
+                          print(error.localizedDescription) }
+                  }
+              }
+      } else {
+        print(error?.localizedDescription)
+      }
+  }
 
 
   // MARK: Properties
