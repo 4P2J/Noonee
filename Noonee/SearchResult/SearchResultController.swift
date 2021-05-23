@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Speech
 
 final class SearchResultController: UIViewController {
 
@@ -40,8 +41,29 @@ final class SearchResultController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     self.configuration()
     self.getPlace()
+    
+    let audioSession = AVAudioSession.sharedInstance()
+    do {
+        try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
+        try audioSession.setMode(AVAudioSession.Mode.spokenAudio)
+        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+
+        let currentRoute = AVAudioSession.sharedInstance().currentRoute
+        for description in currentRoute.outputs {
+            if description.portType == AVAudioSession.Port.headphones {
+                try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.none)
+                print("headphone plugged in")
+            } else {
+                print("headphone pulled out")
+                try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            }
+        }
+    } catch {
+        print("audioSession properties weren't set because of an error.")
+    }
   }
 
   // MARK: Configuration

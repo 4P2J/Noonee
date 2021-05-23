@@ -9,7 +9,7 @@ import UIKit
 import Speech
 import NVActivityIndicatorView
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var speechTextField: UITextField!
@@ -21,13 +21,20 @@ final class SearchViewController: UIViewController {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     var isDeparture: Bool = true
-    var timer = Timer()
     var searchText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        isAccessibilityElement = true
+        if isDeparture {
+            titleLabel.accessibilityLabel = "Let's set the departure. Please say your departure address slowly."
+        } else {
+            titleLabel.isAccessibilityElement = true
+            titleLabel.accessibilityLabel = "Next, It’s time to set the destination now. Please say your destination address."
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
                 .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
                 vc.titleText = self.searchText
@@ -43,15 +50,26 @@ final class SearchViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        startRecording()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.startRecording()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        audioEngine.accessibilityActivate()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
+            recognitionTask?.finish()
+            recognitionTask?.cancel()
+            recognitionRequest = nil
+            recognitionTask = nil
         }
-        timer.invalidate()
     }
 
     private func setNaviBar() {
@@ -86,9 +104,20 @@ final class SearchViewController: UIViewController {
 
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSession.Category.record)
-            try audioSession.setMode(AVAudioSession.Mode.measurement)
+            try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
+            try audioSession.setMode(AVAudioSession.Mode.spokenAudio)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+
+            let currentRoute = AVAudioSession.sharedInstance().currentRoute
+                for description in currentRoute.outputs {
+                    if description.portType == AVAudioSession.Port.headphones {
+                        try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.none)
+                        print("headphone plugged in")
+                    } else {
+                        print("headphone pulled out")
+                        try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+                    }
+            }
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
@@ -103,7 +132,7 @@ final class SearchViewController: UIViewController {
 
         recognitionRequest.shouldReportPartialResults = true
 
-        recognitionTask = speechRecognizer?
+        self.recognitionTask = self.speechRecognizer?
             .recognitionTask(with: recognitionRequest,
                              resultHandler: { (result, error) in
                                 var isFinal = false
@@ -122,6 +151,7 @@ final class SearchViewController: UIViewController {
                                     self.recognitionTask = nil
                                 }
         })
+
 
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0,
