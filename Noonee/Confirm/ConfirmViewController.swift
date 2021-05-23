@@ -28,6 +28,11 @@ final class ConfirmViewController: UIViewController {
         super.viewDidLoad()
 
         setLayout()
+
+        setButton.becomeFirstResponder()
+        setButton.isAccessibilityElement = true
+        UIAccessibility.post(notification: .announcement, argument: setButton)
+        setButton.accessibilityHint = "You have successfully set up your journey. Please select your route option."
     }
 
     @IBAction private func setButtonDidTap(_ sender: UIButton) {

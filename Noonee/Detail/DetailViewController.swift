@@ -28,6 +28,9 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+
+        payButton.isAccessibilityElement = true
+        payButton.accessibilityHint = "This route is recommend route. Please check the detail of route by tapping the list. If you want to set and pre-pay this route, tap the bottom of the screen."
     }
 
   var error: NSError?
