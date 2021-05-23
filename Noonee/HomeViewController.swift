@@ -26,80 +26,107 @@ final class HomeViewController: UIViewController {
     var circle: CircleView = CircleView()
     var centerX = UIScreen.main.bounds.size.width * 0.5
     var centerY = UIScreen.main.bounds.size.height * 0.5
-    circle.frame = CGRect(x: centerX, y: centerY, width: 100, height: 100)
+    circle.frame = CGRect(x: centerX , y: centerY, width: 0, height: 0)
     circle.layer.backgroundColor = UIColor.red.cgColor
+
     circle.layer.cornerRadius = 50
     circle.layer.shadowOpacity = 0.5
     circle.layer.shadowRadius = 7
+    circle.layer.masksToBounds = true
     return circle
   }()
   private var firstAlertLabel: UILabel = {
     let label = UILabel()
-    label.font = .boldSystemFont(ofSize: 22)
+    label.font = .boldSystemFont(ofSize: 38)
+    label.textColor = UIColor(named: "backgroundBlack")
     return label
   }()
   private var secondAlertLabel: UILabel = {
     let label = UILabel()
-    label.font = .boldSystemFont(ofSize: 25)
+    label.font = .boldSystemFont(ofSize: 40)
+    label.textColor = UIColor(named: "backgroundBlack")
     return label
+  }()
+  private var backgroundBlackView: UIView = {
+    let view = UIView()
+    view.backgroundColor = UIColor(named: "backgroundBlack")
+    return view
   }()
 
 
   // MARK: Properties
 
   private lazy var viewCenter: CGPoint = self.view.center
-  private lazy var firstFrame = self.animateCircle.frame.insetBy(dx: -50, dy: -50)
-  private lazy var secondFrame = self.animateCircle.frame.insetBy(dx: 15, dy: 15)
-  private lazy var thirdFrame = self.animateCircle.frame.insetBy(dx: -20, dy: -20)
-  private lazy var lastFrame = self.animateCircle.frame.insetBy(dx: 105, dy: 105)
-    private var homeState = HomeState(rawValue: UserData.homeState ?? "first")
-    let authContext = LAContext()
-    var message : String?
+  private lazy var firstFrame = self.animateCircle.frame.insetBy(dx: -700, dy: -700)
+  private lazy var secondFrame = self.animateCircle.frame.insetBy(dx: 700, dy: 700)
+  var homeState = HomeState(rawValue: UserData.homeState ?? "first")
+
+  var steps: [Step] = []
+  var stepCount: Int = 0
+  var timer: Timer = Timer()
+  var arriveTimeCount: Int = 10 {
+    didSet {
+      if arriveTimeCount == 0 {
+        self.timer.invalidate()
+        self.isRecievedEvent = .isArrived
+        self.timeLabel.text = "Arrived"
+      }
+    }
+  }
 
 
-  private var isRecievedEvent: AlertAnimation = .none
+  var isRecievedEvent: AlertAnimation = .none
   {
     didSet {
       switch isRecievedEvent {
       case .none:
         return
       case .payment:
-        self.colorFrameChange(UIColor(named: "AlertColorYellow"))
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "Done")
       case .isArrived:
-        self.colorFrameChange(UIColor(named: "mainGreen"))
+        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Arrived No. \(self.busNumberLabel.text!)", text2: "No. \(self.busNumberLabel.text!)") { self.timeLabel.text = "Arrived"}
       case .isOnBoard:
-        self.colorFrameChange(UIColor(named: "AlertColorYellow"))
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "You'r in", text2: "No. \(self.busNumberLabel.text!)")
       case .curveSoon:
-        self.colorFrameChange(UIColor(named: "AlertColorRed"))
+        self.colorFrameChange(UIColor(named: "AlertColorRed"), text1: "caution", text2: "Big Curve")
       case .afterOneStation:
-        self.colorFrameChange(UIColor(named: "mainGreen"))
+        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "After", text2: "1 Station")
       case .getOffNow:
-        self.colorFrameChange(UIColor(named: "mainGreen"))
+        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Get off", text2: "now")
       case .completeTheJourney:
-        self.colorFrameChange(UIColor(named: "AlertColorYellow"))
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "Complete", text2: "the Journey")
       }
     }
   }
-  private let duration: Double = 2
+  private let duration: Double = 0.7
+  private var stations: [String] = []
+  private var busNumbers: [String] = []
 
 
   // MARK: Functions
 
-  private func colorFrameChange(_ color: UIColor?) {
+  private func colorFrameChange(_ color: UIColor?, text1: String, text2: String? = nil, completion: (() -> Void)? = nil) {
     DispatchQueue.main.async {
       self.animateCircle.backgroundColor = color
+      self.backgroundBlackView.isHidden = false
+      self.backgroundBlackView.alpha = 1
+      self.firstAlertLabel.text = text1
+      self.secondAlertLabel.text = text2
+      self.firstAlertLabel.isHidden = false
+      self.secondAlertLabel.isHidden = false
       UIView.animate(withDuration: self.duration, animations: {
         self.animateCircle.frame = self.firstFrame
       }) { _ in
-        UIView.animate(withDuration: self.duration, animations: {
+        UIView.animate(withDuration: 0.8, animations: {
           self.animateCircle.frame = self.secondFrame
         }) { _ in
-          UIView.animate(withDuration: self.duration, animations: {
-            self.animateCircle.frame = self.thirdFrame
+          UIView.animate(withDuration: 0.3, animations: {
+            self.firstAlertLabel.isHidden = true
+            self.secondAlertLabel.isHidden = true
+            self.backgroundBlackView.alpha = 0
           }) { _ in
-            UIView.animate(withDuration: self.duration, animations: {
-              self.animateCircle.frame = self.lastFrame
-            })
+            self.backgroundBlackView.alpha = 1
+            self.backgroundBlackView.isHidden = true
           }
         }
       }
@@ -108,20 +135,30 @@ final class HomeViewController: UIViewController {
 
   private func startAnimate() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-      self.isRecievedEvent = .afterOneStation
+      self.isRecievedEvent = .completeTheJourney
     }
-
   }
 
   private enum ViewMetrics {
     static let buttonCornerRadius: CGFloat = 20
   }
 
-    private enum HomeState: String {
+  enum HomeState: String {
         case first
         case departure
         case destionation
-    }
+  }
+
+  private func runTimer() {
+    self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+
+    RunLoop.current.add(timer, forMode: .common)
+  }
+
+  @objc private func updateTimer() {
+    self.arriveTimeCount -= 1
+    self.timeLabel.text = "도착까지 0:0\(arriveTimeCount)"
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -132,37 +169,7 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setHomeState()
         setNavigationBar()
-    }
-
-  override func viewDidAppear(_ animated: Bool) {
-    self.startAnimate()
-  }
-
-    @IBAction private func testFaceId(_ sender: UIButton) {
-        if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                                         error: nil) {
-            switch authContext.biometryType {
-            case .faceID:
-                message = "Face ID 인증해주세요."
-            case .touchID :
-                message = "Touch ID로 인증해주세요."
-            case .none :
-                message = ""
-            @unknown default:
-                message = ""
-            }
-
-            authContext
-                .evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                                localizedReason: message!) { (isSuccess, error) in
-                    if isSuccess {
-                        print("인증성공")
-                    } else {
-                        if let error = error {
-                            print(error.localizedDescription) }
-                    }
-                }
-        }
+      self.isRecievedEvent = .isArrived
     }
 
     private func setNavigationBar() {
@@ -183,8 +190,22 @@ final class HomeViewController: UIViewController {
     private func setHomeState() {
         switch homeState {
         case .departure:
-            busStopLabel.text = UserData.departure
-            busNumberLabel.text = "No."
+          let busTypes = self.steps.filter{ $0.type == "BUS" }
+          for i in 0..<busTypes.count {
+            for j in busTypes[i].stations {
+              self.stations.append(j.name)
+            }
+          }
+
+          for i in 0..<busTypes.count {
+            for j in busTypes[i].routes {
+              self.busNumbers.append(j.name)
+            }
+          }
+
+          busStopLabel.text = self.stations[stepCount]
+          busNumberLabel.text = self.busNumbers[stepCount]
+          self.runTimer()
             journeyButton.isHidden = true
             backView.isHidden = false
         case .destionation:
@@ -201,20 +222,28 @@ final class HomeViewController: UIViewController {
     }
 
   private func animationLayoutSet() {
+    self.view.addSubview(self.backgroundBlackView)
+    self.view.bringSubviewToFront(self.backgroundBlackView)
     self.view.addSubview(self.animateCircle)
-    self.animateCircle.addSubview(self.firstAlertLabel)
-    self.animateCircle.addSubview(self.secondAlertLabel)
     self.view.bringSubviewToFront(self.animateCircle)
+    self.view.addSubview(self.firstAlertLabel)
+    self.view.addSubview(self.secondAlertLabel)
 
+    self.backgroundBlackView.isHidden = true
+    self.firstAlertLabel.isHidden = true
+    self.secondAlertLabel.isHidden = true
 
-//    self.firstAlertLabel.snp.makeConstraints{
-//      $0.bottom.equalTo(self.animateCircle.snp.centerY)
-//      $0.centerX.equalToSuperview()
-//    }
-//    self.secondAlertLabel.snp.makeConstraints{
-//      $0.top.equalTo(self.animateCircle.snp.centerY)
-//      $0.centerX.equalToSuperview()
-//    }
+    self.backgroundBlackView.snp.makeConstraints{
+      $0.edges.equalToSuperview()
+    }
+    self.firstAlertLabel.snp.makeConstraints{
+      $0.centerY.equalToSuperview().inset(200)
+      $0.centerX.equalToSuperview()
+    }
+    self.secondAlertLabel.snp.makeConstraints{
+      $0.centerX.equalToSuperview()
+      $0.top.equalTo(self.firstAlertLabel.snp.bottom).offset(30)
+    }
   }
 }
 
