@@ -26,15 +26,16 @@ final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        isAccessibilityElement = true
+        titleLabel.becomeFirstResponder()
+        titleLabel.isAccessibilityElement = true
+        UIAccessibility.post(notification: .screenChanged, argument: titleLabel)
         if isDeparture {
             titleLabel.accessibilityLabel = "Let's set the departure. Please say your departure address slowly."
         } else {
-            titleLabel.isAccessibilityElement = true
             titleLabel.accessibilityLabel = "Next, It’s time to set the destination now. Please say your destination address."
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
             if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
                 .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
                 vc.titleText = self.searchText
@@ -45,17 +46,23 @@ final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         setLayout()
         setNaviBar()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+        super.viewDidAppear(animated)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.startRecording()
         }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
         audioEngine.accessibilityActivate()
     }
 
