@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-enum AlertAnimation {
-  case none
-  case payment
-  case isArrived
-  case isOnBoard
-  case curveSoon
-  case afterOneStation
-  case getOffNow
-  case completeTheJourney
+enum AlertAnimation: Int {
+  case none = 0
+  case payment = 1
+  case isArrived = 2
+  case isOnBoard = 3
+  case curveSoon = 4
+  case afterOneStation = 5
+  case getOffNow = 6
+  case completeTheJourney = 7
 }

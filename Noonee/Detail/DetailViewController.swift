@@ -54,7 +54,9 @@ final class DetailViewController: UIViewController {
                       let rootVC = self.navigationController?.viewControllers[0] as? HomeViewController
                       rootVC?.steps = self.StepList
                       rootVC?.homeState = .departure
-                      rootVC?.isRecievedEvent = .payment
+                      DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        rootVC?.isRecievedEvent = .payment
+                      }
                       self.navigationController?.popToRootViewController(animated: true)
                     }
                   } else {

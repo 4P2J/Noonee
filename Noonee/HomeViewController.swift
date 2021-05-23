@@ -43,7 +43,7 @@ final class HomeViewController: UIViewController {
   }()
   private var secondAlertLabel: UILabel = {
     let label = UILabel()
-    label.font = .boldSystemFont(ofSize: 40)
+    label.font = UIFont.systemFont(ofSize: 40, weight: .black)
     label.textColor = UIColor(named: "backgroundBlack")
     return label
   }()
@@ -86,8 +86,9 @@ final class HomeViewController: UIViewController {
           self.firstAlertLabel.accessibilityLabel = "Your payment has been completed. Bus number 360 will arrive at Jamsil station in 20 seconds."
         }
       case .isArrived:
-        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Arrived No. \(self.busNumberLabel.text!)", text2: "No. \(self.busNumberLabel.text!)") { self.timeLabel.text = "Arrived"
+        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Arrived No. 350", text2: "No. 360") { self.timeLabel.text = "Arrived"
           self.firstAlertLabel.accessibilityLabel = "You have arrived at the destination stop. Now, get off the bus."
+          self.showAnimation()
         }
       case .isOnBoard:
         self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "You'r in", text2: "No. \(self.busNumberLabel.text!)") {
@@ -113,6 +114,7 @@ final class HomeViewController: UIViewController {
   private let duration: Double = 0.7
   private var stations: [String] = []
   private var busNumbers: [String] = []
+  var count = 0
 
 
   // MARK: Functions
@@ -129,7 +131,7 @@ final class HomeViewController: UIViewController {
       UIView.animate(withDuration: self.duration, animations: {
         self.animateCircle.frame = self.firstFrame
       }) { _ in
-        UIView.animate(withDuration: 0.8, animations: {
+        UIView.animate(withDuration: 2, animations: {
           self.animateCircle.frame = self.secondFrame
         }) { _ in
           UIView.animate(withDuration: 0.3, animations: {
@@ -181,9 +183,35 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setHomeState()
         setNavigationBar()
-      self.isRecievedEvent = .isArrived
     }
 
+
+  private func showAnimation() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+      self.isRecievedEvent = .isOnBoard
+      DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        self.isRecievedEvent = .curveSoon
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+          self.isRecievedEvent = .afterOneStation
+          DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.isRecievedEvent = .getOffNow
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+              self.isRecievedEvent = .getOffNow
+              DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.isRecievedEvent = .completeTheJourney
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  private func animator() {
+    for i in 0...6 {
+      self.isRecievedEvent = AlertAnimation(rawValue: i)!
+    }
+  }
     private func setNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
         let logoImage = UIImage(named: "logo")
