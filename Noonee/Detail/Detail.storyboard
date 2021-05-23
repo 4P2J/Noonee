@@ -26,6 +26,9 @@
                                 <state key="normal" title="Pay this route">
                                     <color key="titleColor" red="0.074509803920000006" green="0.074509803920000006" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="testFaceId:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ArH-9P-i0X"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="B5g-tz-RHm">
                                 <rect key="frame" x="16" y="30" width="145.5" height="81.5"/>
