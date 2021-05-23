@@ -82,19 +82,31 @@ final class HomeViewController: UIViewController {
       case .none:
         return
       case .payment:
-        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "Done")
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "Done") {
+          self.firstAlertLabel.accessibilityLabel = "Your payment has been completed. Bus number 360 will arrive at Jamsil station in 20 seconds."
+        }
       case .isArrived:
-        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Arrived No. \(self.busNumberLabel.text!)", text2: "No. \(self.busNumberLabel.text!)") { self.timeLabel.text = "Arrived"}
+        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Arrived No. \(self.busNumberLabel.text!)", text2: "No. \(self.busNumberLabel.text!)") { self.timeLabel.text = "Arrived"
+          self.firstAlertLabel.accessibilityLabel = "You have arrived at the destination stop. Now, get off the bus."
+        }
       case .isOnBoard:
-        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "You'r in", text2: "No. \(self.busNumberLabel.text!)")
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "You'r in", text2: "No. \(self.busNumberLabel.text!)") {
+
+        }
       case .curveSoon:
         self.colorFrameChange(UIColor(named: "AlertColorRed"), text1: "caution", text2: "Big Curve")
+        self.firstAlertLabel.accessibilityLabel = "It's a curve after 10 seconds. Be careful."
       case .afterOneStation:
-        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "After", text2: "1 Station")
+        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "After", text2: "1 Station") {
+          self.firstAlertLabel.accessibilityLabel = "Get off after one stop. Please get ready to get off."
+        }
       case .getOffNow:
-        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Get off", text2: "now")
+        self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Get off", text2: "now") {
+        }
       case .completeTheJourney:
-        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "Complete", text2: "the Journey")
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "Complete", text2: "the Journey"){
+          self.firstAlertLabel.accessibilityLabel = "You have arrived at your final destination. Thank you for using the service, see you on the next journey!"
+        }
       }
     }
   }
