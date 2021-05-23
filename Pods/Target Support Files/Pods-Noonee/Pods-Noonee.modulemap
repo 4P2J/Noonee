@@ -1,0 +1,6 @@
+framework module Pods_Noonee {
+  umbrella header "Pods-Noonee-umbrella.h"
+
+  export *
+  module * { export * }
+}

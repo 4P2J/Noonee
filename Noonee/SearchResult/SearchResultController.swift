@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Speech
 
 final class SearchResultController: UIViewController {
 
@@ -23,6 +24,11 @@ final class SearchResultController: UIViewController {
   let searchPathAPI = SearchPathAPI()
   let searchPlaceAPI = SearchPlaceAPI()
   var placeList: [Place] = []
+  var isDeparture: Bool = true
+
+  // SingleTon
+  let singletonData = SingletonUserData.shared
+  // SingleTon
 
 
   // MARK: Action
@@ -31,25 +37,33 @@ final class SearchResultController: UIViewController {
     self.navigationController?.popViewController(animated: true)
   }
 
-
-  // MARK: Initializing
-
-  init(placeName: String) {
-    self.titleText = placeName
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-
   // MARK: View LifeCycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     self.configuration()
     self.getPlace()
+    
+    let audioSession = AVAudioSession.sharedInstance()
+    do {
+        try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
+        try audioSession.setMode(AVAudioSession.Mode.spokenAudio)
+        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+
+        let currentRoute = AVAudioSession.sharedInstance().currentRoute
+        for description in currentRoute.outputs {
+            if description.portType == AVAudioSession.Port.headphones {
+                try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.none)
+                print("headphone plugged in")
+            } else {
+                print("headphone pulled out")
+                try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            }
+        }
+    } catch {
+        print("audioSession properties weren't set because of an error.")
+    }
   }
 
   // MARK: Configuration
@@ -72,8 +86,10 @@ final class SearchResultController: UIViewController {
   private func configureView() {
     self.view.backgroundColor = UIColor(named: "backgroundBlack")
     navigationController?.navigationBar.prefersLargeTitles = true
-    navigationController?.navigationItem.leftBarButtonItem?.title = "Back"
     navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+
+    placeLabel.text = titleText
   }
 
   private func configureRetryButton() {
@@ -113,6 +129,40 @@ extension SearchResultController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if isDeparture {
+        if let vc = UIStoryboard(name: "Main", bundle: .main)
+            .instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
+            vc.isDeparture = false
+            UserData.departure = placeList[indexPath.row].title
+
+          // SingleTon
+          singletonData.depaturePlace = placeList[indexPath.row]
+          // SingleTon
+
+            if let roadAddress = placeList[indexPath.row].roadAddress {
+                UserData.departureAddress = roadAddress
+            } else {
+                UserData.departureAddress = placeList[indexPath.row].jibunAddress
+            }
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    } else {
+        if let vc = UIStoryboard(name: "Confirm", bundle: .main)
+            .instantiateViewController(withIdentifier: "ConfirmViewController") as? ConfirmViewController {
+            UserData.destination = placeList[indexPath.row].title
+
+          // SingleTon
+          singletonData.destinationPlace = placeList[indexPath.row]
+          // SingleTon
+
+            if let roadAddress = placeList[indexPath.row].roadAddress {
+                UserData.destinationAddress = roadAddress
+            } else {
+                UserData.destinationAddress = placeList[indexPath.row].jibunAddress
+            }
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 
   }
 
