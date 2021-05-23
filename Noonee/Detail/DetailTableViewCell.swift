@@ -25,7 +25,7 @@ final class DetailTableViewCell: UITableViewCell {
   func setProperties(_ index: Int, routeIndex: Int, step: Step) {
     orderLabel.text = String(index + 1)
     titleLabel.text = step.instruction
-    if step.type == "SUBWAY" || step.type == "BUS" {
+    if (step.type == "SUBWAY" || step.type == "BUS") && step.routes.count > routeIndex {
       busLabel.text = step.routes[routeIndex].name
     } else {
       busLabel.text = step.type

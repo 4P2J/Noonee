@@ -106,10 +106,12 @@ final class SelectViewContrller: UIViewController {
         .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
       if let depaturePlace = self.singletonData.depaturePlace, let goalPlace = self.singletonData.destinationPlace {
         self.searchPathAPI.searchPath(startPlace: depaturePlace, goalPlace: goalPlace) { [weak self] in
+          
           vc.StepList = try! $0.get().pathList[0].legs[0].stepList
           vc.totalFare = try! $0.get().pathList[0].fare
           DispatchQueue.main.async {
             self?.navigationController?.pushViewController(vc, animated: true)
+
           }
         }
       }

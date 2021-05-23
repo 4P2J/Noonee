@@ -45,13 +45,13 @@
                                 <rect key="frame" x="16" y="130" width="343" height="181"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장소" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LA2-ng-0Wa">
-                                        <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                         <color key="textColor" name="MainGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="until end of service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6p-fC-raq">
-                                        <rect key="frame" x="0.0" y="148" width="290" height="29"/>
+                                        <rect key="frame" x="0.0" y="148" width="318" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -62,9 +62,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrive in 5:17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mI-ua-8QM">
-                                        <rect key="frame" x="108.66666666666667" y="98" width="181.33333333333331" height="36"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrive in 5:17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mI-ua-8QM">
+                                        <rect key="frame" x="154.66666666666663" y="100" width="163.33333333333337" height="32.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                         <color key="textColor" name="buttonGray"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -78,7 +78,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="backgroundBlack"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="8mI-ua-8QM" secondAttribute="trailing" constant="53" id="5pN-55-16w"/>
+                                    <constraint firstAttribute="trailing" secondItem="8mI-ua-8QM" secondAttribute="trailing" constant="25" id="5pN-55-16w"/>
                                     <constraint firstItem="yKA-kz-C1s" firstAttribute="leading" secondItem="LA2-ng-0Wa" secondAttribute="leading" id="9n6-hB-l32"/>
                                     <constraint firstItem="feF-bg-fjn" firstAttribute="leading" secondItem="dsw-JR-jIu" secondAttribute="leading" id="GVk-Qv-szq"/>
                                     <constraint firstItem="yKA-kz-C1s" firstAttribute="top" secondItem="LA2-ng-0Wa" secondAttribute="bottom" constant="10" id="QmS-g1-Wwk"/>
@@ -89,6 +89,7 @@
                                     <constraint firstItem="8mI-ua-8QM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="feF-bg-fjn" secondAttribute="trailing" constant="25" id="bNv-7i-6iR"/>
                                     <constraint firstItem="A6p-fC-raq" firstAttribute="trailing" secondItem="8mI-ua-8QM" secondAttribute="trailing" id="gKa-DZ-vhK"/>
                                     <constraint firstAttribute="trailing" secondItem="yKA-kz-C1s" secondAttribute="trailing" constant="78" id="nOz-i1-cSe"/>
+                                    <constraint firstAttribute="trailing" secondItem="LA2-ng-0Wa" secondAttribute="trailing" id="s8E-gk-O1q"/>
                                     <constraint firstItem="8mI-ua-8QM" firstAttribute="centerY" secondItem="feF-bg-fjn" secondAttribute="centerY" id="xZ7-7V-A5J"/>
                                     <constraint firstItem="A6p-fC-raq" firstAttribute="leading" secondItem="dsw-JR-jIu" secondAttribute="leading" id="xvL-Rv-vyk"/>
                                     <constraint firstItem="LA2-ng-0Wa" firstAttribute="leading" secondItem="dsw-JR-jIu" secondAttribute="leading" id="zi0-nl-cpS"/>
@@ -104,9 +105,6 @@
                                 <state key="normal" title="History">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="testFaceId:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cHH-58-3dq"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
