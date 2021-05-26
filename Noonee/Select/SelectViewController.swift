@@ -30,7 +30,6 @@ final class SelectViewController: UIViewController {
                     vc.totalFare = try! $0.get().pathList[0].fare
                     DispatchQueue.main.async {
                         self?.navigationController?.pushViewController(vc, animated: true)
-
                     }
                 }
             }

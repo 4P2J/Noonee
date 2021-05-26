@@ -33,6 +33,9 @@
 		FF8B26792658E42100E54162 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B26782658E42100E54162 /* Paths.swift */; };
 		FF8B267B26591D1700E54162 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF8B267A26591D1700E54162 /* SearchResult.storyboard */; };
 		FF8B267D26591E4700E54162 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8B267C26591E4600E54162 /* SearchResultController.swift */; };
+		FFBBEB00265E38A2009AEB0F /* SelectRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBBEAFF265E38A2009AEB0F /* SelectRoute.storyboard */; };
+		FFBBEB0A265E3DEC009AEB0F /* SelectRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBBEB09265E3DEC009AEB0F /* SelectRouteButton.swift */; };
+		FFBBEB0C265E3E0D009AEB0F /* SelectRouteButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBBEB0B265E3E0D009AEB0F /* SelectRouteButton.xib */; };
 		FFF3C0B4265999C20069C066 /* SingletonUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF3C0B3265999C20069C066 /* SingletonUserData.swift */; };
 		FFF3C0B82659A0380069C066 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF3C0B72659A0380069C066 /* SelectViewController.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,9 @@
 		FF8B26782658E42100E54162 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
 		FF8B267A26591D1700E54162 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
 		FF8B267C26591E4600E54162 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
+		FFBBEAFF265E38A2009AEB0F /* SelectRoute.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectRoute.storyboard; sourceTree = "<group>"; };
+		FFBBEB09265E3DEC009AEB0F /* SelectRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRouteButton.swift; sourceTree = "<group>"; };
+		FFBBEB0B265E3E0D009AEB0F /* SelectRouteButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRouteButton.xib; sourceTree = "<group>"; };
 		FFF3C0B3265999C20069C066 /* SingletonUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonUserData.swift; sourceTree = "<group>"; };
 		FFF3C0B72659A0380069C066 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,6 +249,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FFBBEB01265E3CAE009AEB0F /* ButtonUI */ = {
+			isa = PBXGroup;
+			children = (
+				FFBBEB09265E3DEC009AEB0F /* SelectRouteButton.swift */,
+				FFBBEB0B265E3E0D009AEB0F /* SelectRouteButton.xib */,
+			);
+			path = ButtonUI;
+			sourceTree = "<group>";
+		};
 		FFF3C0B2265999B30069C066 /* SingletonUserData */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				FFF3C0B72659A0380069C066 /* SelectViewController.swift */,
+				FFBBEAFF265E38A2009AEB0F /* SelectRoute.storyboard */,
+				FFBBEB01265E3CAE009AEB0F /* ButtonUI */,
 			);
 			path = Select;
 			sourceTree = "<group>";
@@ -324,7 +341,9 @@
 				FF5A47E326593A7B0003DEB1 /* PlaceTableViewCell.xib in Resources */,
 				005B9D6226596FB000575FAC /* Detail.storyboard in Resources */,
 				005B9D3F2658D4F600575FAC /* Main.storyboard in Resources */,
+				FFBBEB0C265E3E0D009AEB0F /* SelectRouteButton.xib in Resources */,
 				005B9D502659449100575FAC /* Confirm.storyboard in Resources */,
+				FFBBEB00265E38A2009AEB0F /* SelectRoute.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +409,7 @@
 				005B9D52265944AA00575FAC /* ConfirmViewController.swift in Sources */,
 				FF8B266F2658DDA000E54162 /* SearchPathAPI.swift in Sources */,
 				FF8B26742658DEC500E54162 /* APIURLs.swift in Sources */,
+				FFBBEB0A265E3DEC009AEB0F /* SelectRouteButton.swift in Sources */,
 				FF8B26792658E42100E54162 /* Paths.swift in Sources */,
 				FFF3C0B82659A0380069C066 /* SelectViewController.swift in Sources */,
 				FF8B26712658DDC200E54162 /* SearchPlaceAPI.swift in Sources */,
