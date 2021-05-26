@@ -23,6 +23,7 @@ final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
     var isDeparture: Bool = true
     var searchText = ""
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,10 +36,11 @@ final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
             titleLabel.accessibilityLabel = "Next, It’s time to set the destination now. Please say your destination address."
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
                 .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
-                vc.titleText = self.searchText
+//                vc.titleText = self.searchText
+                vc.titleText = "판교"
                 vc.isDeparture = self.isDeparture
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -54,10 +56,11 @@ final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+      
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.startRecording()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//            self.startRecording()
+//        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
