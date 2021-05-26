@@ -88,10 +88,9 @@ final class HomeViewController: UIViewController {
       case .isArrived:
         self.colorFrameChange(UIColor(named: "mainGreen"), text1: "Arrived No. 350", text2: "No. 360") { self.timeLabel.text = "Arrived"
           self.firstAlertLabel.accessibilityLabel = "You have arrived at the destination stop. Now, get off the bus."
-          self.showAnimation()
         }
       case .isOnBoard:
-        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "You'r in", text2: "No. \(self.busNumberLabel.text!)") {
+        self.colorFrameChange(UIColor(named: "AlertColorYellow"), text1: "You'r in", text2: "No. 360") {
 
         }
       case .curveSoon:
@@ -183,22 +182,26 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setHomeState()
         setNavigationBar()
+//      self.showAnimation()
     }
 
 
   private func showAnimation() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-      self.isRecievedEvent = .isOnBoard
+      self.isRecievedEvent = .payment
       DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-        self.isRecievedEvent = .curveSoon
+        self.isRecievedEvent = .isArrived
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-          self.isRecievedEvent = .afterOneStation
+          self.isRecievedEvent = .isOnBoard
           DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.isRecievedEvent = .getOffNow
+            self.isRecievedEvent = .curveSoon
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-              self.isRecievedEvent = .getOffNow
+              self.isRecievedEvent = .afterOneStation
               DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                self.isRecievedEvent = .completeTheJourney
+                self.isRecievedEvent = .getOffNow
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                  self.isRecievedEvent = .completeTheJourney
+                }
               }
             }
           }
