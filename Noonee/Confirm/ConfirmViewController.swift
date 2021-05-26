@@ -36,10 +36,12 @@ final class ConfirmViewController: UIViewController {
     }
 
     @IBAction private func setButtonDidTap(_ sender: UIButton) {
+        if let selectVC = UIStoryboard(name: "SelectRoute", bundle: .main).instantiateViewController(withIdentifier: "SelectViewController") as? SelectViewController {
+            selectVC.depaturePlace = self.singletonData.depaturePlace
+            selectVC.destinationPlace = self.singletonData.destinationPlace
 
-      let selectVC = SelectViewContrller(depature: singletonData.depaturePlace!, destination: singletonData.destinationPlace!)
-
-      self.navigationController?.pushViewController(selectVC, animated: true)
+            self.navigationController?.pushViewController(selectVC, animated: true)
+        }
     }
 
     private func setLayout() {
