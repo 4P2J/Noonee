@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SelectRoute-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="SelectViewController" title="SelectRoute" id="Y6W-OH-hqX" customClass="SelectViewController" customModule="Noonee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLx-O5-en9" customClass="SelectRouteButton" customModule="Noonee" customModuleProvider="target">
+                                <rect key="frame" x="16" y="38" width="382" height="130"/>
+                                <color key="backgroundColor" name="HomeButtonGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="a1q-h9-BjT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <state key="normal" title="Recommand">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="RecommandAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KbC-VN-6cy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Cc-y4-0SS" customClass="SelectRouteButton" customModule="Noonee" customModuleProvider="target">
+                                <rect key="frame" x="16" y="206" width="382" height="130"/>
+                                <color key="backgroundColor" name="HomeButtonGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="HjU-ZP-SOH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <state key="normal" title="Time Least">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="TimeLeastAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3sW-uv-H2R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfJ-1H-OEL" customClass="SelectRouteButton" customModule="Noonee" customModuleProvider="target">
+                                <rect key="frame" x="16" y="374" width="382" height="130"/>
+                                <color key="backgroundColor" name="HomeButtonGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="6aD-u3-d1J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <state key="normal" title="Transfer Least">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="TransferLeastAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Oy-Nu-g3q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="backgroundBlack"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vfJ-1H-OEL" secondAttribute="trailing" constant="16" id="1z6-Zf-xaR"/>
+                            <constraint firstItem="4Cc-y4-0SS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="979-dv-oQS"/>
+                            <constraint firstItem="XLx-O5-en9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="9ER-f2-id7"/>
+                            <constraint firstItem="vfJ-1H-OEL" firstAttribute="top" secondItem="4Cc-y4-0SS" secondAttribute="bottom" constant="38" id="GCs-rM-Fgq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XLx-O5-en9" secondAttribute="trailing" constant="16" id="GvO-Gc-2lj"/>
+                            <constraint firstItem="XLx-O5-en9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="38" id="bSh-wE-0aM"/>
+                            <constraint firstItem="4Cc-y4-0SS" firstAttribute="top" secondItem="XLx-O5-en9" secondAttribute="bottom" constant="38" id="bqD-bx-V6N"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4Cc-y4-0SS" secondAttribute="trailing" constant="16" id="eEJ-A0-wXr"/>
+                            <constraint firstItem="vfJ-1H-OEL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="uk9-tG-pWR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Route" largeTitleDisplayMode="always" id="uBF-vn-nzV"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="RecommandButton" destination="XLx-O5-en9" id="HDe-gh-vJD"/>
+                        <outlet property="TimeLeastButton" destination="4Cc-y4-0SS" id="XJA-2X-5T8"/>
+                        <outlet property="TransferLeastButton" destination="vfJ-1H-OEL" id="YKQ-iE-ygc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="123.88392857142857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="HomeButtonGray">
+            <color red="0.30980392156862746" green="0.32941176470588235" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="backgroundBlack">
+            <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
