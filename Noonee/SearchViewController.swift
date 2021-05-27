@@ -40,7 +40,7 @@ final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
             if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
                 .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
 //                vc.titleText = self.searchText
-                vc.titleText = "판교"
+                vc.titleText = "서울"
                 vc.isDeparture = self.isDeparture
                 self.navigationController?.pushViewController(vc, animated: true)
             }
