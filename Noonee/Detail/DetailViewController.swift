@@ -10,20 +10,61 @@ import LocalAuthentication
 
 final class DetailViewController: UIViewController {
 
-
-  // MARK: Layout
-
-    @IBOutlet private weak var payButton: UIButton!
-    @IBOutlet private weak var detailTableView: UITableView!
-  @IBOutlet weak var totaldurationLabel: UILabel!
-  @IBOutlet weak var totalCost: UILabel!
-
-  let authContext = LAContext()
-  var message : String?
+    // MARK: Constant
 
     private enum ViewMetrics {
         static let buttonCornerRadius: CGFloat = 20
     }
+
+
+    // MARK: UI
+
+    @IBOutlet private weak var payButton: UIButton!
+    @IBOutlet private weak var detailTableView: UITableView!
+    @IBOutlet weak var totaldurationLabel: UILabel!
+    @IBOutlet weak var totalCost: UILabel!
+
+
+    // MARK: Action
+
+    @IBAction private func testFaceId(_ sender: UIButton) {
+        if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                                         error: &error) {
+            switch authContext.biometryType {
+            case .faceID:
+                message = "Face ID 인증해주세요."
+            case .touchID :
+                message = "Touch ID로 인증해주세요."
+            case .none :
+                message = ""
+            @unknown default:
+                message = ""
+            }
+
+            authContext
+                .evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                                localizedReason: message!) { (isSuccess, error) in
+                    if isSuccess {
+                        DispatchQueue.main.async {
+                            let rootVC = self.navigationController?.viewControllers[0] as? HomeViewController
+                            rootVC?.steps = self.stepList
+                            rootVC?.homeState = .departure
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                rootVC?.isRecievedEvent = .payment
+                            }
+                            self.navigationController?.popToRootViewController(animated: true)
+                        }
+                    } else {
+                        if let error = error {
+                            print(error.localizedDescription) }
+                    }
+                }
+        } else {
+            print(error?.localizedDescription ?? "")
+        }
+    }
+
+
     // MARK: Properties
 
     var path: Path?
@@ -31,6 +72,9 @@ final class DetailViewController: UIViewController {
     let authContext = LAContext()
     var message : String?
     var error: NSError?
+
+
+    // MARK: View LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,46 +84,8 @@ final class DetailViewController: UIViewController {
         payButton.accessibilityHint = "This route is recommend route. Please check the detail of route by tapping the list. If you want to set and pre-pay this route, tap the bottom of the screen."
     }
 
-  var error: NSError?
 
-  @IBAction private func testFaceId(_ sender: UIButton) {
-      if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                                       error: &error) {
-          switch authContext.biometryType {
-          case .faceID:
-              message = "Face ID 인증해주세요."
-          case .touchID :
-              message = "Touch ID로 인증해주세요."
-          case .none :
-              message = ""
-          @unknown default:
-              message = ""
-          }
-
-          authContext
-              .evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                              localizedReason: message!) { (isSuccess, error) in
-                  if isSuccess {
-                    DispatchQueue.main.async {
-                      let rootVC = self.navigationController?.viewControllers[0] as? HomeViewController
-                      rootVC?.steps = self.StepList
-                      rootVC?.homeState = .departure
-                      DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        rootVC?.isRecievedEvent = .payment
-                      }
-                      self.navigationController?.popToRootViewController(animated: true)
-                    }
-                  } else {
-                      if let error = error {
-                          print(error.localizedDescription) }
-                  }
-              }
-      } else {
-        print(error?.localizedDescription)
-      }
-  }
-
-
+    // MARK: Layout
 
     private func setLayout() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -88,15 +94,15 @@ final class DetailViewController: UIViewController {
         payButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
         detailTableView.estimatedRowHeight = 90
 
-      self.totaldurationLabel.text = "\(self.StepList.reduce(0){ $0 + $1.duration })분"
-      self.totalCost.text = "\(self.totalFare)원"
+        self.totaldurationLabel.text = "\(self.stepList.reduce(0){ $0 + $1.duration })분"
+        self.totalCost.text = "\(self.path?.fare ?? 0)원"
     }
 }
 
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-      return self.StepList.count
+        return self.stepList.count
     }
 
     func tableView(_ tableView: UITableView,
@@ -108,13 +114,9 @@ extension DetailViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-      let step = self.StepList[indexPath.row]
+        let step = self.stepList[indexPath.row]
 
-      detailCell.setProperties(indexPath.row, routeIndex: routeIndex, step: step)
-
-      if step.type == "BUS" || step.type == "SUBWAY" {
-        routeIndex += 1
-      }
+        detailCell.setProperties(indexPath.row, step: step)
 
         return detailCell
     }
