@@ -78,6 +78,10 @@ final class SelectViewController: UIViewController {
     func loadPath() {
         if let depaturePlace = self.singletonData.depaturePlace, let goalPlace = self.singletonData.destinationPlace {
             self.loadingIndicator.startAnimating()
+            self.loadingIndicator.becomeFirstResponder()
+            self.loadingIndicator.isAccessibilityElement = true
+            self.loadingIndicator.accessibilityLabel = "exploring the route."
+
             self.view.isUserInteractionEnabled = false
             self.searchPathAPI.searchPath(startPlace: depaturePlace, goalPlace: goalPlace) { [weak self] in
                 do {
@@ -87,14 +91,15 @@ final class SelectViewController: UIViewController {
                         self?.timeLeastPath = paths.pathList.filter{ $0.labels.contains("최소시간") }.first
                         self?.transferLeastPath = paths.pathList.filter{ $0.labels.contains("최소환승") }.first
                     } else {
-                        self?.alert(message: "해당 구간은 경로안내를 지원하지 않습니다.")
+                        self?.alert(message: "This section does not support route guidance.")
                     }
                     DispatchQueue.main.async() {
                         self?.view.isUserInteractionEnabled = true
                         self?.loadingIndicator.stopAnimating()
+                        self?.recommandButton.becomeFirstResponder()
                     }
                 } catch {
-                    self?.alert(message: "해당 구간의 경로안내를 불러오는데에 실패하였습니다.")
+                    self?.alert(message: "We failed to get a route guide for this section.")
                     DispatchQueue.main.async {
                         self?.loadingIndicator.stopAnimating()
                     }
@@ -113,14 +118,28 @@ final class SelectViewController: UIViewController {
         self.loadPath()
     }
 
+
+    // MARK: Configuration
+
     private func configuration() {
         self.configureNavigation()
+        self.configurationAccessibility()
     }
 
     private func configureNavigation() {
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.title = "Select Route"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+    }
+
+    private func configurationAccessibility() {
+        self.recommandButton.isAccessibilityElement = true
+        self.timeLeastButton.isAccessibilityElement = true
+        self.transferLeastButton.isAccessibilityElement = true
+
+        self.recommandButton.accessibilityHint = "It indicates the best public transportation route."
+        self.timeLeastButton.accessibilityHint = "It indicates the public transportation route with the least travel time."
+        self.transferLeastButton.accessibilityHint = "It indicates the public transportation route with the lowest number of transfers."
     }
 
 
