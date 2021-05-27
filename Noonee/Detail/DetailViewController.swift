@@ -24,6 +24,13 @@ final class DetailViewController: UIViewController {
     private enum ViewMetrics {
         static let buttonCornerRadius: CGFloat = 20
     }
+    // MARK: Properties
+
+    var path: Path?
+    lazy var stepList: [Step] = self.path?.legs[0].stepList ?? []
+    let authContext = LAContext()
+    var message : String?
+    var error: NSError?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,11 +80,6 @@ final class DetailViewController: UIViewController {
   }
 
 
-  // MARK: Properties
-
-  var StepList: [Step] = []
-  var routeIndex = 0
-  var totalFare = 0
 
     private func setLayout() {
         navigationController?.navigationBar.prefersLargeTitles = true
