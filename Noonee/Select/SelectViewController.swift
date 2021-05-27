@@ -21,25 +21,38 @@ final class SelectViewController: UIViewController {
     // MARK: Actions
 
     @IBAction func RecommandAction(_ sender: Any) {
-        if let vc = UIStoryboard(name: "Detail", bundle: .main)
-            .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            if let depaturePlace = self.singletonData.depaturePlace, let goalPlace = self.singletonData.destinationPlace {
-                self.searchPathAPI.searchPath(startPlace: depaturePlace, goalPlace: goalPlace) { [weak self] in
-
-                    vc.StepList = try! $0.get().pathList[0].legs[0].stepList
-                    vc.totalFare = try! $0.get().pathList[0].fare
-                    DispatchQueue.main.async {
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
+        if let vc = UIStoryboard(name: "Detail", bundle: .main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            vc.path = self.bestPath
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
 
     @IBAction func TimeLeastAction(_ sender: Any) {
+        if let vc = UIStoryboard(name: "Detail", bundle: .main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            if self.timeLeastPath != nil {
+                vc.path = self.timeLeastPath
+            } else {
+                vc.path = self.bestPath
+            }
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 
     @IBAction func TransferLeastAction(_ sender: Any) {
+        if let vc = UIStoryboard(name: "Detail", bundle: .main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            if self.transferLeastPath != nil {
+                vc.path = self.transferLeastPath
+            } else {
+                vc.path = self.bestPath
+            }
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 
     private enum ViewMetrics {
@@ -54,6 +67,32 @@ final class SelectViewController: UIViewController {
     var singletonData: SingletonUserData = SingletonUserData.shared
     let searchPathAPI = SearchPathAPI()
 
+    var bestPath: Path?
+    var timeLeastPath: Path?
+    var transferLeastPath: Path?
+
+
+    // MARK: Load Path
+
+    func loadPath() {
+        if let depaturePlace = self.singletonData.depaturePlace, let goalPlace = self.singletonData.destinationPlace {
+            self.searchPathAPI.searchPath(startPlace: depaturePlace, goalPlace: goalPlace) { [weak self] in
+                do {
+                    let paths = try $0.get()
+                    if paths.pathList.count > 0 {
+                        self?.bestPath = paths.pathList.filter{ $0.labels.contains("최적") }.first
+                        self?.timeLeastPath = paths.pathList.filter{ $0.labels.contains("최소환승") }.first
+                        self?.transferLeastPath = paths.pathList.filter{ $0.labels.contains("최소시간") }.first
+                    } else {
+                        self?.alert(message: "해당 구간은 경로안내를 지원하지 않습니다.")
+                    }
+                } catch {
+                    self?.alert(message: "해당 구간의 경로안내를 불러오는데에 실패하였습니다.")
+                }
+            }
+        }
+    }
+
 
     // MARK: View LifeCycle
 
@@ -61,6 +100,7 @@ final class SelectViewController: UIViewController {
         super.viewDidLoad()
         self.configuration()
         self.layout()
+        self.loadPath()
     }
 
     private func configuration() {
