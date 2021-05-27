@@ -13,9 +13,9 @@ final class SelectViewController: UIViewController {
 
     // MARK: UI
 
-    @IBOutlet weak var RecommandButton: SelectRouteButton!
-    @IBOutlet weak var TimeLeastButton: SelectRouteButton!
-    @IBOutlet weak var TransferLeastButton: SelectRouteButton!
+    @IBOutlet weak var recommandButton: SelectRouteButton!
+    @IBOutlet weak var timeLeastButton: SelectRouteButton!
+    @IBOutlet weak var transferLeastButton: SelectRouteButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
 
@@ -129,8 +129,8 @@ final class SelectViewController: UIViewController {
     private func layout() {
         navigationController?.navigationBar.backgroundColor = UIColor(named: "naviBlack")
 
-        self.RecommandButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
-        self.TimeLeastButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
-        self.TransferLeastButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+        self.recommandButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+        self.timeLeastButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
+        self.transferLeastButton.layer.cornerRadius = ViewMetrics.buttonCornerRadius
     }
 }
