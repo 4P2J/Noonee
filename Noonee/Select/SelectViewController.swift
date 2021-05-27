@@ -22,43 +22,22 @@ final class SelectViewController: UIViewController {
     // MARK: Actions
 
     @IBAction func RecommandAction(_ sender: Any) {
-        if let vc = UIStoryboard(name: "Detail", bundle: .main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            vc.path = self.bestPath
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
+        self.pushDetailViewController(selectedPath: self.bestPath)
     }
 
     @IBAction func TimeLeastAction(_ sender: Any) {
-        if let vc = UIStoryboard(name: "Detail", bundle: .main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            if self.timeLeastPath != nil {
-                vc.path = self.timeLeastPath
-            } else {
-                vc.path = self.bestPath
-            }
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
+        self.pushDetailViewController(selectedPath: self.timeLeastPath)
+
     }
 
     @IBAction func TransferLeastAction(_ sender: Any) {
-        if let vc = UIStoryboard(name: "Detail", bundle: .main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            if self.transferLeastPath != nil {
-                vc.path = self.transferLeastPath
-            } else {
-                vc.path = self.bestPath
-            }
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
+        self.pushDetailViewController(selectedPath: self.transferLeastPath)
     }
 
     private enum ViewMetrics {
       static let buttonCornerRadius: CGFloat = 20
     }
+
 
     // MARK: Properties
 
@@ -104,6 +83,22 @@ final class SelectViewController: UIViewController {
                         self?.loadingIndicator.stopAnimating()
                     }
                 }
+            }
+        }
+    }
+
+
+    // MARK: Push ViewController
+
+    private func pushDetailViewController(selectedPath: Path?) {
+        if let vc = UIStoryboard(name: "Detail", bundle: .main).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            if selectedPath != nil {
+                vc.path = selectedPath
+            } else {
+                vc.path = self.bestPath
+            }
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
