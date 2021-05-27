@@ -27,7 +27,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="RecommandAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KbC-VN-6cy"/>
+                                    <action selector="RecommandAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uEG-OH-XiL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Cc-y4-0SS" customClass="SelectRouteButton" customModule="Noonee" customModuleProvider="target">
@@ -41,7 +41,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="TimeLeastAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3sW-uv-H2R"/>
+                                    <action selector="TimeLeastAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ajy-ED-Lqu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfJ-1H-OEL" customClass="SelectRouteButton" customModule="Noonee" customModuleProvider="target">
@@ -55,7 +55,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="TransferLeastAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Oy-Nu-g3q"/>
+                                    <action selector="TransferLeastAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Cru-cc-lwd"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aY2-a8-3o7">
@@ -82,10 +82,10 @@
                     <navigationItem key="navigationItem" title="Select Route" largeTitleDisplayMode="always" id="uBF-vn-nzV"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="RecommandButton" destination="XLx-O5-en9" id="HDe-gh-vJD"/>
-                        <outlet property="TimeLeastButton" destination="4Cc-y4-0SS" id="XJA-2X-5T8"/>
-                        <outlet property="TransferLeastButton" destination="vfJ-1H-OEL" id="YKQ-iE-ygc"/>
                         <outlet property="loadingIndicator" destination="aY2-a8-3o7" id="pjL-tC-Vpr"/>
+                        <outlet property="recommandButton" destination="XLx-O5-en9" id="yHL-z8-MpE"/>
+                        <outlet property="timeLeastButton" destination="4Cc-y4-0SS" id="goZ-s8-zAW"/>
+                        <outlet property="transferLeastButton" destination="vfJ-1H-OEL" id="HUg-xB-qxt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
