@@ -36,6 +36,7 @@
 		FFBBEB00265E38A2009AEB0F /* SelectRoute.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBBEAFF265E38A2009AEB0F /* SelectRoute.storyboard */; };
 		FFBBEB0A265E3DEC009AEB0F /* SelectRouteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBBEB09265E3DEC009AEB0F /* SelectRouteButton.swift */; };
 		FFBBEB0C265E3E0D009AEB0F /* SelectRouteButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBBEB0B265E3E0D009AEB0F /* SelectRouteButton.xib */; };
+		FFBBEB12265F4D2D009AEB0F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBBEB11265F4D2D009AEB0F /* UIViewController+Alert.swift */; };
 		FFF3C0B4265999C20069C066 /* SingletonUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF3C0B3265999C20069C066 /* SingletonUserData.swift */; };
 		FFF3C0B82659A0380069C066 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF3C0B72659A0380069C066 /* SelectViewController.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		FFBBEAFF265E38A2009AEB0F /* SelectRoute.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectRoute.storyboard; sourceTree = "<group>"; };
 		FFBBEB09265E3DEC009AEB0F /* SelectRouteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRouteButton.swift; sourceTree = "<group>"; };
 		FFBBEB0B265E3E0D009AEB0F /* SelectRouteButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectRouteButton.xib; sourceTree = "<group>"; };
+		FFBBEB11265F4D2D009AEB0F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		FFF3C0B3265999C20069C066 /* SingletonUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonUserData.swift; sourceTree = "<group>"; };
 		FFF3C0B72659A0380069C066 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				FF5A47E5265948350003DEB1 /* CALayer+addBorder.swift */,
+				FFBBEB11265F4D2D009AEB0F /* UIViewController+Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				005B9D3C2658D4F600575FAC /* HomeViewController.swift in Sources */,
 				FFF3C0B4265999C20069C066 /* SingletonUserData.swift in Sources */,
 				005B9D382658D4F600575FAC /* AppDelegate.swift in Sources */,
+				FFBBEB12265F4D2D009AEB0F /* UIViewController+Alert.swift in Sources */,
 				005B9D6626596FDF00575FAC /* DetailTableViewCell.swift in Sources */,
 				005B9D3A2658D4F600575FAC /* SceneDelegate.swift in Sources */,
 				FF8B267D26591E4700E54162 /* SearchResultController.swift in Sources */,
