@@ -58,6 +58,10 @@
                                     <action selector="TransferLeastAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Oy-Nu-g3q"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aY2-a8-3o7">
+                                <rect key="frame" x="188.5" y="385.5" width="37" height="37"/>
+                                <color key="color" name="mainGreen"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="backgroundBlack"/>
@@ -65,11 +69,13 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vfJ-1H-OEL" secondAttribute="trailing" constant="16" id="1z6-Zf-xaR"/>
                             <constraint firstItem="4Cc-y4-0SS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="979-dv-oQS"/>
                             <constraint firstItem="XLx-O5-en9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="9ER-f2-id7"/>
+                            <constraint firstItem="aY2-a8-3o7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="EoF-b9-yCd"/>
                             <constraint firstItem="vfJ-1H-OEL" firstAttribute="top" secondItem="4Cc-y4-0SS" secondAttribute="bottom" constant="38" id="GCs-rM-Fgq"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XLx-O5-en9" secondAttribute="trailing" constant="16" id="GvO-Gc-2lj"/>
                             <constraint firstItem="XLx-O5-en9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="38" id="bSh-wE-0aM"/>
                             <constraint firstItem="4Cc-y4-0SS" firstAttribute="top" secondItem="XLx-O5-en9" secondAttribute="bottom" constant="38" id="bqD-bx-V6N"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4Cc-y4-0SS" secondAttribute="trailing" constant="16" id="eEJ-A0-wXr"/>
+                            <constraint firstItem="aY2-a8-3o7" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="hgh-Mx-IyW"/>
                             <constraint firstItem="vfJ-1H-OEL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="uk9-tG-pWR"/>
                         </constraints>
                     </view>
@@ -79,6 +85,7 @@
                         <outlet property="RecommandButton" destination="XLx-O5-en9" id="HDe-gh-vJD"/>
                         <outlet property="TimeLeastButton" destination="4Cc-y4-0SS" id="XJA-2X-5T8"/>
                         <outlet property="TransferLeastButton" destination="vfJ-1H-OEL" id="YKQ-iE-ygc"/>
+                        <outlet property="loadingIndicator" destination="aY2-a8-3o7" id="pjL-tC-Vpr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -92,6 +99,9 @@
         </namedColor>
         <namedColor name="backgroundBlack">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mainGreen">
+            <color red="0.72549019607843135" green="0.92941176470588238" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -16,6 +16,7 @@ final class SelectViewController: UIViewController {
     @IBOutlet weak var RecommandButton: SelectRouteButton!
     @IBOutlet weak var TimeLeastButton: SelectRouteButton!
     @IBOutlet weak var TransferLeastButton: SelectRouteButton!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
 
     // MARK: Actions
@@ -76,18 +77,27 @@ final class SelectViewController: UIViewController {
 
     func loadPath() {
         if let depaturePlace = self.singletonData.depaturePlace, let goalPlace = self.singletonData.destinationPlace {
+            self.loadingIndicator.startAnimating()
+            self.view.isUserInteractionEnabled = false
             self.searchPathAPI.searchPath(startPlace: depaturePlace, goalPlace: goalPlace) { [weak self] in
                 do {
                     let paths = try $0.get()
                     if paths.pathList.count > 0 {
                         self?.bestPath = paths.pathList.filter{ $0.labels.contains("최적") }.first
-                        self?.timeLeastPath = paths.pathList.filter{ $0.labels.contains("최소환승") }.first
-                        self?.transferLeastPath = paths.pathList.filter{ $0.labels.contains("최소시간") }.first
+                        self?.timeLeastPath = paths.pathList.filter{ $0.labels.contains("최소시간") }.first
+                        self?.transferLeastPath = paths.pathList.filter{ $0.labels.contains("최소환승") }.first
                     } else {
                         self?.alert(message: "해당 구간은 경로안내를 지원하지 않습니다.")
                     }
+                    DispatchQueue.main.async() {
+                        self?.view.isUserInteractionEnabled = true
+                        self?.loadingIndicator.stopAnimating()
+                    }
                 } catch {
                     self?.alert(message: "해당 구간의 경로안내를 불러오는데에 실패하였습니다.")
+                    DispatchQueue.main.async {
+                        self?.loadingIndicator.stopAnimating()
+                    }
                 }
             }
         }
