@@ -12,6 +12,8 @@ extension UIViewController {
     func alert(message: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.isAccessibilityElement = true
+            alert.accessibilityHint = message
             alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                 self.navigationController?.popViewController(animated: true)
             })
