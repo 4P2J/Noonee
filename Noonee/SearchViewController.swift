@@ -36,10 +36,20 @@ final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
             titleLabel.accessibilityLabel = "Next, It’s time to set the destination now. Please say your destination address."
         }
 
+        // 기존 코드
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+//            if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
+//                .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
+//                vc.titleText = self.searchText
+//                vc.isDeparture = self.isDeparture
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
+
+        // 테스트용 코드
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if let vc = UIStoryboard(name: "SearchResult", bundle: .main)
                 .instantiateViewController(withIdentifier: "SearchResultController") as? SearchResultController {
-//                vc.titleText = self.searchText
                 vc.titleText = "서울"
                 vc.isDeparture = self.isDeparture
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -56,8 +66,8 @@ final class SearchViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-      
 
+        // 기존 코드
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
 //            self.startRecording()
 //        }
